@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+
+% ---------- Layout and fonts ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1in,headheight=15pt]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ---------- Figures, tables, math ----------
+\usepackage{graphicx}
+\graphicspath{{Figures/}}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,shapes.geometric}
+
+% ---------- Header / footer ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Wireless Networks Project}
+\fancyhead[R]{\small Key Agreement for WBAN (IEEE 802.15.6)}
+\fancyfoot[C]{\small\thepage}
+
+% ---------- Section style ----------
+\usepackage{titlesec}
+\definecolor{najahblue}{RGB}{31,56,100}
+\titleformat{\section}{\Large\bfseries\color{najahblue}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{najahblue}}{\thesubsection}{0.6em}{}
+
+% ---------- References and links ----------
+\usepackage{url}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Physiological-Signal-Based Key Agreement for Wireless Body Area Networks},
+  pdfauthor={Mohammad Hatim}
+}
+
+\newcommand{\Ks}{K_S}
+\newcommand{\Kr}{K_R}
+
+\begin{document}
+
+% ======================= Title page =======================
+\begin{titlepage}
+  \centering
+  \vspace*{0.3cm}
+  {\LARGE\bfseries\color{najahblue} An-Najah National University\par}
+  \vspace{0.8cm}
+  \includegraphics[width=0.30\textwidth]{najah_logo.jpg}\par
+  \vspace{0.9cm}
+  {\Large Wireless Networks Project Report\par}
+  \vspace{0.6cm}
+  \rule{\linewidth}{0.8pt}\par\vspace{0.3cm}
+  {\huge\bfseries Physiological-Signal-Based Key Agreement for Wireless Body Area Networks (IEEE~802.15.6)\par}
+  \vspace{0.3cm}\rule{\linewidth}{0.8pt}\par
+  \vfill
+  \begin{tabular}{>{\bfseries}r l}
+    Student Name: & Mohammad Hatim \\[4pt]
+    Student ID:   & 12217371 \\[4pt]
+    Instructor:   & Dr.~Jihad Hamamreh \\[4pt]
+    Date:         & \today \\
+  \end{tabular}
+  \vspace{1.5cm}
+\end{titlepage}
+
+\input{Abstract}
+
+\tableofcontents
+\clearpage
+
+\input{Introduction}
+
+\input{System_Description}
+
+\input{CROSS_LAYER_OPTIMIZATION}
+
+\input{Performance_Analysis}
+
+\input{Security_Analysis}
+
+\input{CONCLUSIONS}
+
+\bibliographystyle{ieeetr}
+\bibliography{References}
+
+\end{document}
