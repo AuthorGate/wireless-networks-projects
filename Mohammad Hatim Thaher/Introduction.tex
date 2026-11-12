@@ -1,0 +1,20 @@
+\section{Introduction}
+Wireless Body Area Networks (WBAN), defined by the IEEE 802.15.6 standard \cite{ieee802156}, are designed for medical applications where tiny sensors are deployed on or inside the human body \cite{ullah2012survey}. Because these medical devices have strictly limited battery capacities and transmit highly sensitive health data, maintaining robust security while ensuring maximum energy efficiency are critical and often conflicting challenges.
+
+IEEE 802.15.6 offers three security levels: unsecured communication, authentication only, and authentication with encryption (AES-128 in CCM mode). Both secured levels need a shared master key between the node and the hub, which the standard establishes through elliptic-curve Diffie--Hellman based association. These procedures cost extra message exchanges and public-key computation on the sensor.
+
+Every sensor on the same body observes the same heartbeat. The time between consecutive beats, the Inter-Pulse Interval (IPI), is random enough to serve as key material, hard to measure from a distance, and identical everywhere on the body \cite{poon2006novel}. Schemes such as PSKA \cite{venkatasubramanian2010pska} have shown that physiological signals let co-located sensors agree on a key without any pre-deployed secret.
+
+\subsection{Problem Statement}
+The traditional cryptographic key exchange protocols (such as Diffie--Hellman \cite{diffie1976new}) require significant wireless communication overhead. In WBANs, wireless transmission is usually the most energy-consuming operation. Exchanging keys over the air rapidly drains the medical sensors' batteries, which can lead to required surgical replacements for implanted devices, and exposes the highly sensitive medical data to interception and Man-in-the-Middle (MitM) attacks.
+
+The goal is to let two sensors on the same body, $S$ (initiator) and $R$ (responder), establish a shared key such that:
+\begin{enumerate}[label=\textbf{G\arabic*.}]
+  \item the key is never transmitted over the wireless channel;
+  \item the raw biometric data (IPI values) is never transmitted in the clear;
+  \item both sensors can confirm that they hold the same key;
+  \item communication and computation stay low enough for constrained sensors.
+\end{enumerate}
+
+\subsection{Threat Model}
+We assume an adversary who can eavesdrop on, replay, drop and modify every wireless message between $S$ and $R$, but who is not in physical contact with the patient and therefore cannot measure the patient's ECG at the same moment as the sensors. A compromised sensor is outside the scope of this project.

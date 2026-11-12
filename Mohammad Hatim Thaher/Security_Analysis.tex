@@ -1,0 +1,51 @@
+\section{Security Analysis}
+\label{sec:security}
+
+Table~\ref{tab:security} maps the goals from the problem statement to the mechanisms that achieve them.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Security goals and how the protocol meets them.}
+  \label{tab:security}
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.3cm} X}
+    \toprule
+    \textbf{Goal / attack} & \textbf{Mechanism} \\
+    \midrule
+    Key never on air (G1)  & $\Ks$ and $\Kr$ are computed locally. Only the Bloom filter, the indices, the nonce and the MAC tags are transmitted. \\
+    Biometric privacy (G2) & The Bloom filter stores only hash positions. $I$ reveals which features match, not their values. \\
+    Key confirmation (G3)  & Matching $\mathit{MAC}_1$, $\mathit{MAC}_2$ and $C$ prove that both sides hold the same key without revealing it. \\
+    Eavesdropping          & Without the ECG features, an attacker cannot recompute the key from the observed messages. \\
+    Tampering with $I$     & $I$ is covered by $\mathit{MAC}_1$. Any change makes $\mathit{MAC}_1 \neq \mathit{MAC}_2$, and $S$ aborts. \\
+    Replay                 & The fresh nonce $N_o$ is bound into every MAC, so tags from old sessions fail. \\
+    Man-in-the-Middle      & An attacker away from the body cannot measure the same ECG, so it cannot produce a valid $\mathit{MAC}_1$ or $C$. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Communication Overhead}
+\begin{table}[htbp]
+  \centering
+  \caption{Approximate payload of each protocol message (excluding device IDs).}
+  \label{tab:overhead}
+  \begin{tabular}{l l r}
+    \toprule
+    \textbf{Message} & \textbf{Content} & \textbf{Payload} \\
+    \midrule
+    $S \to R$ & Bloom filter (433 bits) + nonce               & $\approx 58$ B \\
+    $R \to S$ & $\mathit{MAC}_1$ (160 bits) + index bitmap (30 bits) & $\approx 24$ B \\
+    $S \to R$ & Confirmation tag $C$ (160 bits)              & 20 B \\
+    \midrule
+    \textbf{Total} &                                       & $\approx 102$ B \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+As Table~\ref{tab:overhead} shows, the whole agreement needs about 100 bytes of payload in three messages, and the key itself is never among them.
+
+\subsection{Limitations}
+\begin{itemize}
+  \item \textbf{Same-signal simulation.} Both sensors read the same ECG lead from the same start sample, so their features are identical. Real sensors would see noise and time offsets, and future tests should measure false-accept and false-reject rates under those conditions.
+  \item \textbf{Feature entropy.} Neighbouring windows are shifted by only one sample, so many features repeat. The effective entropy of the key is therefore lower than its 160-bit length. Longer, non-overlapping windows would improve it \cite{poon2006novel}.
+  \item \textbf{SHA-1.} SHA-1 is no longer collision-resistant \cite{stevens2017sha1}. HMAC-SHA1 is still considered acceptable, but key derivation should move to SHA-256.
+  \item \textbf{Energy.} Energy savings are argued analytically. They should be measured on real sensor hardware.
+\end{itemize}

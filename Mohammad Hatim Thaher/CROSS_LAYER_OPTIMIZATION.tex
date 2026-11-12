@@ -1,0 +1,12 @@
+\section{Cross-Layer Optimization for Energy Efficiency}
+Within the context of the IEEE 802.15.6 standard, optimizing the interaction between the security sub-layer and the Physical/MAC layers is essential for prolonging network lifetime.
+
+Our protocol takes a cross-layer approach: it shifts the energy burden of key establishment from the radio transceiver to the local microcontroller. The key material comes from a physical-world signal (the patient's ECG) that both sensors already measure for their medical function, instead of from public-key messages exchanged over the MAC layer. The resulting 160-bit shared secret can serve as the master key from which the IEEE 802.15.6 security sub-layer derives the AES-128 keys it uses to protect frames.
+
+This design brings three benefits:
+\begin{itemize}
+  \item \textbf{Shorter radio activity.} Key establishment needs only three short messages, about 100 bytes of payload in total (Section~\ref{sec:security}). No public keys or certificates have to be sent.
+  \item \textbf{No public-key computation.} The sensors use only SHA-1 and HMAC, which are far cheaper than the elliptic-curve operations of the standard's association procedures.
+  \item \textbf{No pre-deployment.} No password or certificate has to be loaded into the sensor before use, because the shared secret comes from the body itself.
+\end{itemize}
+Together these reduce the radio duty cycle needed for key establishment, which helps extend the battery life of energy-constrained medical implants.
