@@ -1,0 +1,53 @@
+\section{System Description}
+To resolve the energy--security trade-off in WBANs, this project implements and evaluates a Physiological-Signal-Based Key Agreement protocol, building on the open-source \texttt{physio-key-gen} implementation \cite{physiokeygen}. The system model consists of a sender (Sensor $S$) and a receiver (Sensor $R$) located on the same patient's body.
+
+Rather than transmitting cryptographic keys over the air, both sensors independently generate the same key locally from synchronous heartbeat features, the Inter-Pulse Intervals (IPI), extracted from the patient's ECG signal. Because both sensors observe the same physiological process, their IPI readings are strongly correlated. A Bloom filter \cite{bloom1970space} reconciles small reading discrepancies without exposing the raw biometric data, so the key stays on the sensors. The protocol has three phases, summarised in Figure~\ref{fig:protocol}.
+
+\subsection{Phase 1: Feature Generation}
+\begin{itemize}
+  \item \textbf{QRS detection.} A 3-second window of the ECG (lead MLII, $f_s = 360$~Hz) is cross-correlated with a 5-sample sinusoidal template. Samples whose correlation exceeds a threshold $\theta = 2$ are marked as R-peaks.
+  \item \textbf{IPI.} The IPI is the average time between consecutive detected peaks: $\mathrm{IPI} = \operatorname{mean}\{(p_{j+1}-p_j)/f_s\}$.
+  \item \textbf{Quantisation.} The IPI is converted to a fixed-point binary string with 13 fractional bits. For example, $\mathrm{IPI}\approx 0.882$~s becomes \texttt{.1110000111100}.
+  \item \textbf{Feature vector.} Each feature $f_i$ concatenates three quantised IPIs from windows shifted by one sample. Each sensor builds $N_f = 30$ features: $F_S$ at $S$ and $F_R$ at $R$.
+\end{itemize}
+
+\subsection{Phase 2: Reconciliation with a Bloom Filter}
+$S$ inserts its 30 features into a Bloom filter sized for a false-positive rate $p$:
+\begin{equation}
+  m = -\frac{n \ln p}{(\ln 2)^2}, \qquad k = \frac{m}{n}\ln 2 .
+  \label{eq:bloom}
+\end{equation}
+With $n = 30$ and $p = 1/1040$ this gives $m = 433$ bits and $k = 10$ SHA-1 based hash functions. $S$ sends $\langle ID_S, \mathit{BF}_S, N_o\rangle$, where $N_o$ is a random nonce. $R$ tests each of its own features against the filter, and the matching positions form the common index set $I$. The filter contains only hash positions, so an eavesdropper learns neither $F_S$ nor $F_R$.
+
+\subsection{Phase 3: Key Generation and Confirmation}
+\begin{enumerate}
+  \item If $|I|$ exceeds the security threshold $\tau = 8$, $R$ computes $\Kr = \mathrm{SHA1}(\Vert_{i\in I} f^R_i)$ and $\mathit{MAC}_1 = \mathrm{HMAC}_{\Kr}(I \,\Vert\, N_o)$ \cite{rfc2104}, then sends $\langle ID_R, \mathit{MAC}_1, I\rangle$.
+  \item $S$ computes $\Ks = \mathrm{SHA1}(\Vert_{i\in I} f^S_i)$ and $\mathit{MAC}_2 = \mathrm{HMAC}_{\Ks}(I \,\Vert\, N_o)$. If $\mathit{MAC}_1 = \mathit{MAC}_2$, then $\Ks = \Kr$, $I$ was not modified, and the reply is fresh.
+  \item $S$ sends the confirmation $C = \mathrm{HMAC}_{\Ks}(ID_S \,\Vert\, ID_R \,\Vert\, N_o)$. $R$ verifies it with $\Kr$, and both sides accept the key.
+\end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      >=Stealth, font=\small,
+      party/.style={draw, rounded corners, fill=najahblue!10, minimum width=3cm, minimum height=0.8cm, font=\bfseries},
+      act/.style={draw=black!30, fill=white, rounded corners=2pt, align=left, font=\footnotesize, text width=5.0cm, inner sep=4pt},
+      msg/.style={->, thick, najahblue}]
+    \node[party] (S) at (0,0)    {Sensor $S$};
+    \node[party] (R) at (10.2,0) {Sensor $R$};
+    \draw[dashed, black!40] (S.south) -- ++(0,-12.0);
+    \draw[dashed, black!40] (R.south) -- ++(0,-12.0);
+    \node[draw, ellipse, fill=red!8, font=\footnotesize, align=center] at (5.1,-1.0) {Same patient ECG\\(measured locally)};
+    \node[act, anchor=north] at (0,-1.9)    {Extract IPIs $\rightarrow F_S$\\Build Bloom filter $\mathit{BF}_S$\\Pick random nonce $N_o$};
+    \node[act, anchor=north] at (10.2,-1.9) {Extract IPIs $\rightarrow F_R$};
+    \draw[msg] (0.1,-3.9) -- node[above, font=\footnotesize]{$\langle ID_S,\ \mathit{BF}_S,\ N_o\rangle$} (10.1,-3.9);
+    \node[act, anchor=north] at (10.2,-4.3) {Common indices $I$; check $|I|>\tau$\\$\Kr=\mathrm{SHA1}(\Vert_{i\in I} f^R_i)$\\$\mathit{MAC}_1=\mathrm{HMAC}_{\Kr}(I\Vert N_o)$};
+    \draw[msg] (10.1,-6.5) -- node[above, font=\footnotesize]{$\langle ID_R,\ \mathit{MAC}_1,\ I\rangle$} (0.1,-6.5);
+    \node[act, anchor=north] at (0,-6.9) {$\Ks=\mathrm{SHA1}(\Vert_{i\in I} f^S_i)$\\Accept iff $\mathit{MAC}_1=\mathrm{HMAC}_{\Ks}(I\Vert N_o)$};
+    \draw[msg] (0.1,-8.9) -- node[above, font=\footnotesize]{$C=\mathrm{HMAC}_{\Ks}(ID_S\Vert ID_R\Vert N_o)$} (10.1,-8.9);
+    \node[act, anchor=north] at (10.2,-9.3) {Verify $C$ with $\Kr$ $\Rightarrow$ $\Ks=\Kr$};
+    \node[draw=green!50!black, fill=green!6, rounded corners, font=\footnotesize\bfseries, text=green!30!black] at (5.1,-11.4) {The key itself is never transmitted};
+  \end{tikzpicture}
+  \caption{Message flow of the key agreement protocol between sensors $S$ and $R$.}
+  \label{fig:protocol}
+\end{figure}
