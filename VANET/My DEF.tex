@@ -1,0 +1,291 @@
+\newcommand{\mySU}{SU} % Secondary User
+\newcommand{\myPU}{PU} % Primary User
+\newcommand{\myUCRS}{UCRS} % Underlay Cognitive Radio System
+\newcommand{\myUS}{US} % User Scheduling
+\newcommand{\myPHY}{PHY} % Physical Layer
+\newcommand{\myDLC}{DLC} % Data Link Control Layer
+\newcommand{\myCLO}{CLO} % Cross-Layer Optimization
+\newcommand{\mySE}{SE} % Spectral Efficiency
+\newcommand{\myQoS}{QoS} % Quality of Service
+\newcommand{\myBEP}{BEP} % Bit Error Probability
+\newcommand{\myPEP}{PEP} % Packet Error Probability
+\newcommand{\mySINR}{SINR} % Signal-to-Interference-plus-Noise Ratio
+\newcommand{\myTHARQ}{THARQ} % Truncated Hybrid ARQ
+\newcommand{\myCC}{CC} % Chase Combining
+\newcommand{\myARQ}{ARQ} % Automatic Repeat reQuest
+\newcommand{\myCRC}{CRC} % Cyclic Redundancy Check
+\newcommand{\myCA}{CA} % Coding Adaptation
+\newcommand{\myJBPL}{JBPL} % Joint Bit and Power Loading
+\newcommand{\myLDPC}{LDPC} % Low-Density Parity Check
+\newcommand{\myABICM}{ABICM} % Adaptive Bit-Interleaved Coded Modulation
+\newcommand{\myABICMinv}{\ensuremath{\mathrm{ABICM}^{-1}}} % Inverse ABICM
+\newcommand{\myQAM}{QAM} % Quadrature Amplitude Modulation
+\newcommand{\myTF}{TF} % Time-Frequency
+\newcommand{\mySFB}{SFB} % Subcarrier Feedback
+\newcommand{\myAFB}{AFB} % Adaptive Feedback
+\newcommand{\myEGC}{EGC} % Equal Gain Combining
+\newcommand{\myChannelEstimator}{channel estimator} % Channel Estimator
+\newcommand{\myI}{I} % Indicator
+\newcommand{\myII}{II} % Type II
+\newcommand{\myRV}{RV} % Random Variable
+\newcommand{\myPDF}{PDF} % Probability Density Function
+\newcommand{\myGA}{GA} % Genetic Algorithm
+\newcommand{\myMATLAB}{MATLAB} % MATLAB Software
+
+\newcommand{\mymax}{\mathrm{max}} % Maximum
+\newcommand{\myK}{K} % Number of Subcarriers
+\newcommand{\myX}{X} % Random Variable X
+\newcommand{\myA}{A} % Random Variable A
+\newcommand{\myJ}{J} % Transmission Index
+\newcommand{\myi}{i} % Index i
+\newcommand{\myH}{H} % Channel Coefficient
+\newcommand{\mybrm}{\mathrm{b}} % Bit
+\newcommand{\myP}{P} % Power
+\newcommand{\myUBrm}{\mathrm{UB}} % Upper Bound
+\newcommand{\myw}{w} % Weight
+\newcommand{\myf}{f} % Function f
+
+\newcommand{\myun}{un} % Uncoded
+\newcommand{\myco}{co} % Coded
+\newcommand{\myunrm}{\mathrm{un}} % Uncoded (roman)
+\newcommand{\mycorm}{\mathrm{co}} % Coded (roman)
+
+\newcommand{\myG}{G} % Gaussian RV sum
+\newcommand{\mypac}{pac} % Packet
+\newcommand{\mypacrm}{\mathrm{\mypac}} % Packet (roman)
+\newcommand{\myreq}{req} % Requirement
+\newcommand{\myreqrm}{\mathrm{\myreq}} % Requirement (roman)
+\newcommand{\mydB}{dB} % Decibel
+\newcommand{\myIII}{III} % Type III
+\newcommand{\mydBrm}{\mathrm{dB}} % dB (roman)
+\newcommand{\myMreq}{\myM_{\myreqrm}} % Minimum required bits
+\newcommand{\YSellzeroj}{\ensuremath{\myY_{\myS,\ell,0,\myj}}} 
+\newcommand{\YSellonej}{\ensuremath{\myY_{\myS,\ell,1,\myj}}}
+\newcommand{\YSellKj}{\ensuremath{\myY_{\myS,\ell,\myK-1,\myj}}}
+\newcommand{\YSjelk}{\ensuremath{\myY^{(\myj)}_{\myS,\ell,\myk}}}
+
+\newcommand{\myQAMdemod}{\begin{tabular}{c}\myQAM{}\\demodulator\end{tabular}}
+\newcommand{\myDeinterleaver}{deinterleaver}
+\newcommand{\myLDPCdecoder}{\begin{tabular}{c}\myLDPC{}\\decoder\end{tabular}}
+
+\newcommand{\myCRCcheck}{\begin{tabular}{c}\myCRC\\check\end{tabular}}
+\newcommand{\myPass}{pass} % CRC pass
+\newcommand{\myFail}{fail} % CRC fail
+
+\newcommand{\myB}{B} % Bit
+\newcommand{\myBhatkhat}{\ensuremath{\hat{\myB}_{\kappa}}} % Estimated bit
+\newcommand{\myRC}{R_c} % Code rate
+\newcommand{\mytotrm}{\mathrm{tot}} % Total
+\newcommand{\myMtot}{\myM_{\mytotrm}} % Total constellation points
+\newcommand{\myBlk}{\myB_{\ell,\myk}} % Block bit
+
+\newcommand{\myJDots}{%
+  \scriptsize
+  \begin{tabular}{@{}c@{}}
+    $\cdot$\\[-1.5ex]
+    $\cdot$\\[-1.5ex]
+    $\cdot$
+  \end{tabular}%
+} % Vertical ellipsis
+\newcommand{\myy}{y} % generic y variable
+\newcommand{\myD}{D} % generic D variable
+\newcommand{\myb}{b} % generic b variable
+\newcommand{\mya}{a} % generic a variable
+\newcommand{\myL}{L} % number of packets/blocks
+\newcommand{\myd}{d} % distance / Hamming weight
+\newcommand{\myu}{u} % unit step function
+
+\newcommand{\myAbf}{\mathbf{A}} % matrix A
+\newcommand{\mypbf}{\mathbf{p}} % power vector
+\newcommand{\mymbf}{\mathbf{m}} % modulation pattern vector
+\newcommand{\myminmathrm}{\mathrm{min}} 
+\newcommand{\myQAMrm}{\mathrm{\myQAM}} 
+\newcommand{\mytemprm}{\mathrm{temp}} 
+\newcommand{\mytriprm}{\mathrm{trip}} 
+\newcommand{\myp}{p} % generic power
+\newcommand{\myS}{S} 
+\newcommand{\mySrm}{\mathrm{S}} 
+\newcommand{\SSellZeroj}{\ensuremath{\myS_{\mySrm,\ell,0,\myj}}} 
+\newcommand{\SSellOnej}{\ensuremath{\myS_{\mySrm,\ell,1,\myj}}} 
+\newcommand{\SSellKj}{\ensuremath{\myS_{\mySrm,\ell,\myK-1,\myj}}} 
+\newcommand{\SSelk}{\myS_{\mySrm,\ell,\myk}} 
+
+\newcommand{\Dlk}{\myD_{\ell,\myk}} 
+\newcommand{\myHcal}{\mathcal{H}} % channel coefficients
+\newcommand{\myParGen}{parameter generator}
+
+\newcommand{\myR}{R} % rate
+\newcommand{\myRhat}{\hat{\myR}} % estimated rate
+
+\newcommand{\myc}{c} % generic constant
+\newcommand{\myz}{z} % generic complex variable
+
+\newcommand{\myoptrm}{\mathrm{opt}} % optimal
+% Channel matrices
+\newcommand{\HPP}{\ensuremath{\myHcal_{\myPrm\myPrm}}} % PU-PU channel
+\newcommand{\HPS}{\ensuremath{\myHcal_{\myPrm\mySrm}}} % PU-SU channel
+\newcommand{\HSP}{\ensuremath{\myHcal_{\mySrm\myPrm}}} % SU-PU channel
+\newcommand{\HSS}{\ensuremath{\myHcal_{\mySrm\mySrm}}} % SU-SU channel
+\newcommand{\IPjn}{\ensuremath{\myImath_{\myPrm,\myj}[\myn]}} % PU interference
+\newcommand{\WPjn}{\ensuremath{\myW_{\myPrm,\myj}[\myn]}} % PU noise
+\newcommand{\ISjn}{\ensuremath{\myImath_{\mySrm,\myj}[\myn]}} % SU interference
+\newcommand{\WSjn}{\ensuremath{\myW_{\mySrm,\myj}[\myn]}} % SU noise
+
+\newcommand{\myRX}{RX} % receiver
+\newcommand{\myTX}{TX} % transmitter
+\newcommand{\myBL}{BL} % bit loading
+\newcommand{\myDFTFB}{DFT-FB} % DFT filter bank
+\newcommand{\myTPI}{TPI} % total power interference
+\newcommand{\mySCP}{SCP} % symbol cyclic prefix
+\newcommand{\myPL}{PL} % path loss
+
+\newcommand{\myHtilde}{\tilde{H}} % normalized channel coefficient
+
+\newcommand{\myLBrm}{\mathrm{LB}} % lower bound
+
+% Expected value notation
+\newcommand{\myE}[2][]{\mathbf{E}_{#1}\!\left\{#2\right\}} % expectation
+\newcommand{\EX}[2]{\mathrm{E}_{#1}\!\left\{#2\right\}} % alternative notation
+
+% Inner product / conditional / set notation
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle} % inner product
+\newcommand{\cond}[3]{#1 \!\mid\! (#2 = #3)} % conditional
+\newcommand{\set}[1]{\left\{#1\right\}} % set
+\newcommand{\myM}{M} % modulation order
+\newcommand{\myNbb}{\mathbb{N}} % natural numbers
+\newcommand{\myZbb}{\mathbb{Z}} % integers
+\newcommand{\myRbb}{\mathbb{R}} % real numbers
+
+\newcommand{\myx}{x} % generic x
+
+\newcommand{\myOmegaZeroK}{\Omega_{0,K}} % Frequency bin set from 0 to K-1
+
+\newcommand{\mySSellk}{\myS_{\mySrm,\myell,\myk}} % SU transmitted symbol at time slot ℓ and subcarrier k
+\newcommand{\mygellk}[1]{\myg_{\myell,\myk}[#1]} % Pulse shaping filter g at slot ℓ, subcarrier k, sample #
+\newcommand{\mySSn}{\myS_{\mySrm}[\myn]} % SU transmitted symbol at discrete time n
+
+\newcommand{\J}{J} % Transmission index
+\newcommand{\Jmax}{\myJ_{\mathrm{max}}} % Maximum number of transmissions
+
+\newcommand{\YSelkj}{\myY_{\mySrm,\ell,\myk,\myj}} % Received SU signal at slot ℓ, subcarrier k, transmission j
+
+\newcommand{\myFB}{FB} % Feedback
+
+\newcommand{\YSelkjp}{\myY_{\mySrm,\ell,\myk,{\myj}'}} % Received SU signal at slot ℓ, subcarrier k, previous transmission j'
+\newcommand{\HSSelkj}{\myH_{\mySrm\mySrm,\ell,\myk,\myj}} % SU-to-SU channel at slot ℓ, subcarrier k, transmission j
+\newcommand{\XPSelkj}{\myX_{\myPrm\mySrm,\ell,\myk,\myj}} % PU-to-SU transmitted signal at slot ℓ, subcarrier k, transmission j
+\newcommand{\ISelkj}{\myImath_{\mySrm,\ell,\myk,\myj}} % Interference at SU for slot ℓ, subcarrier k, transmission j
+\newcommand{\WSelkj}{\myW_{\mySrm,\ell,\myk,\myj}} % Noise at SU for slot ℓ, subcarrier k, transmission j
+
+% Indexing set notation
+\newcommand{\Omegaset}[2]{%
+  \Omega_{#1,#2} = \set{n \in \myZbb : #1 \le n \le #1 + #2 - 1} % Set of indices from #1 to #1+#2-1
+}
+
+\newcommand{\HSSelkjp}{\myH_{\mathrm{SS},\ell,\myk,{\myj}'}} % SU-to-SU channel for previous transmission j'
+\newcommand{\HSSelkjpconj}{\myH^{*}_{\mySrm\mySrm,\ell,\myk,{\myj}'}} % Conjugate of SU-to-SU channel for previous transmission j'
+
+\newcommand{\ASSkj}{\myA^{(\myj)}_{\mySrm,\myk}} % SU SINR after j transmissions on subcarrier k
+
+\newcommand{\HSSkjt}{\widetilde{H}_{\mySrm\mySrm,\myk,{\myj}'}} % Time-invariant SU channel estimate
+\newcommand{\HPSkjt}{\widetilde{H}_{\myPrm\mySrm,\myk,{\myj}'}} % Time-invariant PU-to-SU channel estimate
+
+\newcommand{\figscale}{0.6} % Scaling factor for figures
+\newcommand{\figtext}[1]{\scalebox{\figscale}{#1}} % Scale figure text
+
+\newcommand{\myg}{g} % Pulse shaping filter
+
+\newcommand{\myQAMmodulator}{\scalebox{0.6}{\shortstack{\myQAM{}\\modulator}}} % QAM modulator block
+\newcommand{\myInterleaver}{\scalebox{0.6}{interleaver}} % Interleaver block
+\newcommand{\myLDPCencoder}{\scalebox{0.6}{\shortstack{\myLDPC{}\\encoder}}} % LDPC encoder block
+
+\newcommand{\myell}{\ell} % Time slot index
+\newcommand{\myj}{j} % Transmission index
+\newcommand{\myk}{k} % Subcarrier index
+\newcommand{\abs}[1]{\lvert #1\rvert} % Absolute value
+
+\newcommand{\pP}{\myp_{\myPrm}} % PU transmit power
+\newcommand{\myPrm}{\mathrm{P}} % Primary user notation
+
+\newcommand{\myCcal}{\mathcal{C}} % Codebook set
+\newcommand{\myNcal}{\mathcal{N}} % Noise set
+\newcommand{\myF}{F}  % Generic function F
+\newcommand{\myWSS}[0]{WSS} % Wide Sense Stationary
+\newcommand{\mypow}[1]{p_{#1}} % Power allocation
+
+\newcommand{\mySS}[3]{S_{S,#1,#2,#3}} % SU transmitted symbol at indices
+
+\newcommand{\gkl}{\myg_{\ell,\myk}[\myn]} % Pulse g at slot ℓ, subcarrier k, time n
+\newcommand{\gshift}{g[n-K\ell]\,e^{\,i\frac{2\pi}{K} nk}} % Time-shifted pulse for OFDM
+% Sequence notations
+\newcommand{\myn}{n} % sequence length
+\newcommand{\SPn}{\ensuremath{\myS_{\myPrm}[\myn]}} % PU sequence
+\newcommand{\SSn}{\ensuremath{\myS_{\mySrm}[\myn]}} % SU sequence
+
+\newcommand{\myTrm}{\mathrm{T}} % transpose
+\newcommand{\mym}{m} % modulation order
+\newcommand{\myY}{Y} % received signal
+
+% Received signals
+\newcommand{\YPjn}{\ensuremath{\myY_{\myPrm,\myj}[\myn]}} % PU received signal
+\newcommand{\YSjn}{\ensuremath{\myY_{\mySrm,\myj}[\myn]}} % SU received signal
+
+\newcommand{\myImath}{I} % interference
+\newcommand{\myW}{W} % noise
+\newcommand{\OmegaRc}{\Omega_{R_c}}
+% ===== Parameters for Performance Analysis =====
+
+\newcommand{\rbRc}{R_c}                 % code rate
+\newcommand{\rbsigmaSW}{\sigma_{\mathrm{S},\mathrm{W}}}
+\newcommand{\rbK}{K}                    % number of subcarriers
+\newcommand{\rbOmega}{\Omega_{0,K}}     % index set
+\newcommand{\rbpk}{p_k}                 % power on subcarrier k
+\newcommand{\rbsigmaSSk}{\sigma_{SS,k}} % SU-SU channel variance
+\newcommand{\rbmk}{m_k}                 % modulation order per subcarrier
+% ===== System Parameters =====
+\newcommand{\rbMtot}{M_{\mathrm{tot}}}
+
+% ===== Spectral Efficiency Bounds =====
+\newcommand{\rbSLB}{S_{\mathrm{LB}}}
+
+% ===== Coding Rate =====
+% --- Example definitions for LaTeX commands ---
+\newcommand{\BGTwo}{Base Graph 2}       % اسم مصفوفة التحقق
+\newcommand{\LiftSize}{384}             % حجم الرفع
+\newcommand{\BaseRate}{1/3}             % معدل الكود الأساسي
+\newcommand{\RateSet}{\{1/3, 1/2, 2/3, 3/4\}}  % مجموعة معدلات الكود
+\newcommand{\GA}{genetic algorithm}     % اختصار GA
+\newcommand{\Mreq}{M_{\text{req}}}      % الحد المطلوب للـ QoS
+\newcommand{\JmaxVal}{2}                % الحد الأقصى لعدد الإعادة
+\newcommand{\preqVal}{0.1}              % احتمال الخطأ المطلوب
+% --- Transmit powers ---
+\newcommand{\ptot}{p_{\mathrm{tot}}}       % Total SU TX power
+\newcommand{\pp}{p_{\mathrm{P}}}           % PU TX power
+
+% --- Subcarriers and symbols ---
+\newcommand{\Mtot}{M_{\mathrm{tot}}}       % Total number of symbols
+\newcommand{\K}{K}                          % Number of subcarriers
+\newcommand{\Lsym}{L}                       % Number of multicarrier symbols
+
+% --- Noise and interference ---
+\newcommand{\sigmaPW}{\sigma_{\mathrm{P},\mathrm{W}}^2} % PU thermal noise
+\newcommand{\sigmaSW}{\sigma_{\mathrm{S},\mathrm{W}}^2} % SU thermal noise
+\newcommand{\sigmaSP}{\sigma_{\mathrm{SP}}^2}           % SU→PU interference
+\newcommand{\sigmaPS}{\sigma_{\mathrm{PS}}^2}           % PU→SU interference
+\newcommand{\sigmaPIk}{\sigma_{\mathrm{P},I,k}^2}      % PU TPI profile
+\newcommand{\sigmaSIk}{\sigma_{\mathrm{S},I,k}^2}      % SU TPI profile
+
+% --- Interference temperature ---
+\newcommand{\iTemp}{i_{\mathrm{temp}}}     % Interference temperature
+\newcommand{\betaVal}{\beta}               % Interference margin
+\newcommand{\preq}{p_{\mathrm{req}}}       % Required probability for QoS
+\newcommand{\rbRcopt}{\hat{R}_{\mathrm{c,opt}}}  % Optimum coding rate
+% --- Preamble or before \begin{document} ---
+\newcommand{\rbJmax}{J_\text{max}}              % Max transmissions
+\newcommand{\rbMreq}{M_\text{req}}              % Required symbols
+\newcommand{\rbpreq}{p_\text{req}}              % Required probability
+\newcommand{\rbEtaDB}{\eta}                     % Average energy per bit (dB)
+
+
+
+

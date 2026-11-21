@@ -1,0 +1,530 @@
+
+\section{Modern V2X Communication Technologies}
+\label{sec:modern_v2x}
+
+Vehicular communication technologies have
+evolved to support increasingly demanding
+transportation applications. Early VANET
+research focused primarily on short-range
+wireless communication, while more recent
+developments include cellular-based
+Vehicle-to-Everything (V2X) systems.
+
+The principal technology families include
+IEEE 802.11p-based communication,
+Long-Term Evolution V2X (LTE-V2X),
+and Fifth-Generation New Radio V2X
+(5G NR-V2X).
+
+These technologies differ in their
+radio access mechanisms, infrastructure
+dependencies, resource allocation
+approaches, and application capabilities
+\cite{MacHardy2018,Naik2019}.
+
+\subsection{IEEE 802.11p and DSRC}
+
+Dedicated Short-Range Communications
+(DSRC) is associated with vehicular
+communication systems based on
+IEEE 802.11p and related standards.
+
+IEEE 802.11p adapts wireless local
+area networking techniques for
+vehicular environments.
+
+It enables nearby vehicles and
+roadside infrastructure to exchange
+messages without requiring a
+cellular base station for each
+direct communication session.
+
+This characteristic is relevant
+to safety applications that
+require local dissemination
+of transportation information
+\cite{Karagiannis2011}.
+
+\subsubsection{Channel Access Mechanism}
+
+IEEE 802.11p uses a contention-based
+medium access approach derived from
+the IEEE 802.11 family.
+
+Nodes attempt to access the shared
+wireless channel using carrier sensing
+and randomized backoff mechanisms.
+
+This decentralized approach allows
+vehicles to communicate directly
+without requiring centralized
+scheduling for every transmission.
+
+However, channel contention can
+become a challenge when many
+vehicles attempt to transmit
+messages within the same
+communication area.
+
+In dense traffic environments,
+collisions and channel congestion
+may reduce message delivery
+reliability.
+
+\subsubsection{Advantages and Limitations}
+
+An important advantage of
+IEEE 802.11p-based communication
+is its support for direct
+vehicle-to-vehicle communication.
+
+Its decentralized operation
+can be useful in situations
+where cellular coverage
+is unavailable.
+
+However, communication
+performance depends on
+vehicle density, channel
+conditions, interference,
+and the selected
+transmission parameters.
+
+Consequently, the suitability
+of IEEE 802.11p should be
+evaluated according to
+the target application
+and operating environment.
+
+\subsection{LTE-V2X Communication}
+
+LTE-V2X extends cellular
+communication technologies
+to support direct and
+network-assisted vehicular
+communication.
+
+A major feature is the
+PC5 sidelink interface,
+which enables direct
+communication between
+nearby vehicles.
+
+The Uu interface supports
+communication through
+cellular network
+infrastructure.
+
+These interfaces serve
+different purposes and
+may complement one another
+\cite{Molina2017,MacHardy2018}.
+
+\subsubsection{Direct Sidelink Communication}
+
+Direct sidelink communication
+allows vehicles to exchange
+information without routing
+every message through a
+cellular base station.
+
+This is important for
+applications requiring
+local awareness of
+surrounding vehicles.
+
+LTE-V2X supports
+resource allocation
+approaches that differ
+according to network
+coverage and
+operating configuration.
+
+Under network-assisted
+operation, infrastructure
+may coordinate radio
+resource allocation.
+
+Under autonomous operation,
+vehicles select resources
+using distributed mechanisms.
+
+\subsubsection{Sensing-Based Resource Selection}
+
+Autonomous LTE-V2X sidelink
+operation can use sensing-based
+semi-persistent scheduling.
+
+Vehicles observe channel
+activity and select candidate
+radio resources for
+transmission.
+
+Selected resources may be
+reserved for repeated
+periodic transmissions.
+
+This approach is particularly
+relevant to vehicular
+applications that exchange
+periodic awareness messages.
+
+Nevertheless, resource
+collisions can still occur,
+especially when vehicles
+select overlapping resources
+or experience hidden-node
+conditions \cite{Molina2017}.
+
+\subsection{5G NR-V2X Communication}
+
+5G New Radio V2X (NR-V2X)
+was developed to support
+more advanced vehicular
+communication requirements.
+
+Compared with earlier
+vehicular technologies,
+NR-V2X introduces additional
+radio capabilities and
+communication mechanisms.
+
+These developments are
+relevant to cooperative
+driving, advanced
+vehicle coordination,
+and applications with
+demanding reliability
+and latency requirements
+\cite{Naik2019}.
+
+\subsubsection{Unicast, Groupcast, and Broadcast}
+
+NR-V2X sidelink supports
+multiple communication
+patterns, including
+unicast, groupcast,
+and broadcast.
+
+Unicast communication
+targets a particular
+receiving device.
+
+Groupcast communication
+targets a defined group
+of receivers.
+
+Broadcast communication
+disseminates information
+to nearby receivers
+without addressing
+one specific device.
+
+These communication
+patterns provide
+flexibility for
+different vehicular
+applications.
+
+For example, a
+cooperative maneuver
+may involve a selected
+group of vehicles,
+while a general
+hazard warning
+may be distributed
+more broadly.
+
+\subsubsection{Reliability and Latency Requirements}
+
+Advanced vehicular
+applications may require
+reliable communication
+within strict
+time constraints.
+
+However, the existence
+of a newer wireless
+standard does not
+automatically guarantee
+that every application
+will meet its
+performance requirements.
+
+Reliability depends
+on radio conditions,
+resource scheduling,
+traffic density,
+receiver configuration,
+and implementation
+details.
+
+Performance must
+therefore be verified
+for the particular
+scenario and application.
+
+\subsection{IEEE 802.11bd Evolution}
+
+IEEE 802.11bd represents
+an evolution of
+IEEE 802.11-based
+vehicular communication.
+
+Its development addresses
+limitations of earlier
+vehicular wireless
+technologies while
+considering compatibility
+with existing systems.
+
+The evolution of
+IEEE 802.11bd and
+5G NR-V2X illustrates
+that vehicular
+communication research
+has progressed along
+multiple radio
+technology paths
+\cite{Naik2019}.
+
+Rather than assuming
+one technology is
+universally superior,
+comparative studies
+must consider
+deployment requirements,
+channel conditions,
+and application objectives.
+
+\subsection{Comparison of V2X Technologies}
+
+Table~\ref{tab:v2x_technology_comparison}
+summarizes the main
+conceptual differences
+between the reviewed
+technology families.
+
+\begin{table*}[t]
+\centering
+\caption{Qualitative Comparison of Major V2X Communication Technologies}
+\label{tab:v2x_technology_comparison}
+\footnotesize
+\begin{tabular}{|p{3.0cm}|p{4.0cm}|p{4.0cm}|p{4.0cm}|}
+\hline
+\textbf{Characteristic} &
+\textbf{IEEE 802.11p / DSRC} &
+\textbf{LTE-V2X} &
+\textbf{5G NR-V2X} \\
+\hline
+Technology family &
+IEEE 802.11-based &
+LTE cellular technology &
+5G New Radio technology \\
+\hline
+Direct communication &
+Supported &
+Supported through PC5 sidelink &
+Supported through NR sidelink \\
+\hline
+Channel access &
+Contention-based &
+Scheduled or autonomous resource selection &
+Flexible resource allocation mechanisms \\
+\hline
+Infrastructure requirement &
+Not required for direct local communication &
+Not required for autonomous direct sidelink &
+Not required for autonomous direct sidelink \\
+\hline
+Communication patterns &
+Primarily broadcast-oriented vehicular messaging &
+Direct vehicular message exchange &
+Unicast, groupcast, and broadcast support \\
+\hline
+Major evaluation concern &
+Channel contention and congestion &
+Resource selection and interference &
+Advanced service reliability and resource management \\
+\hline
+\end{tabular}
+\end{table*}
+
+The comparison is qualitative.
+It does not claim that a
+particular technology
+achieves the highest
+packet delivery ratio,
+lowest delay, or
+greatest coverage
+under all conditions.
+
+Such claims require
+controlled evaluation
+using comparable
+radio parameters,
+traffic conditions,
+and application
+requirements.
+
+\subsection{Coexistence and Interoperability}
+
+Vehicular communication
+systems may be deployed
+using different radio
+technologies.
+
+This creates challenges
+for interoperability
+between vehicles,
+roadside infrastructure,
+and communication
+service providers.
+
+A vehicle equipped
+with one radio
+technology cannot
+automatically communicate
+directly with a vehicle
+using an incompatible
+radio interface.
+
+Interoperability may
+therefore require
+multiradio equipment,
+compatible protocol
+stacks, gateways,
+or infrastructure-based
+information exchange.
+
+Coexistence also
+requires consideration
+of spectrum allocation,
+interference, and
+deployment policies
+\cite{MacHardy2018}.
+
+\subsection{Technology Selection Considerations}
+
+Selecting a suitable
+V2X communication
+technology requires
+consideration of
+multiple factors.
+
+\subsubsection{Application Requirements}
+
+Different vehicular
+applications have
+different communication
+requirements.
+
+Local awareness
+messages, emergency
+warnings, cooperative
+maneuvers, and
+information services
+may require different
+levels of reliability,
+latency, and data rate.
+
+\subsubsection{Infrastructure Availability}
+
+Some communication
+services benefit from
+cellular infrastructure,
+while direct sidelink
+communication may
+operate without
+continuous network
+coverage.
+
+The availability
+of roadside and
+cellular infrastructure
+therefore influences
+system architecture.
+
+\subsubsection{Traffic Density}
+
+Vehicle density affects
+wireless channel usage,
+interference, and
+communication resource
+availability.
+
+A technology that
+performs effectively
+in a lightly loaded
+scenario may experience
+different limitations
+under heavy traffic.
+
+\subsubsection{Deployment and Compatibility}
+
+Deployment decisions
+must account for
+existing vehicle
+equipment, regional
+standards, spectrum
+regulations, and
+long-term compatibility.
+
+These factors can
+influence the practical
+adoption of a
+communication technology
+even when its technical
+capabilities are
+promising.
+
+\subsection{Discussion}
+
+The evolution from
+IEEE 802.11p-based
+communication to
+LTE-V2X and NR-V2X
+reflects the growing
+requirements of
+connected transportation
+systems.
+
+IEEE 802.11p provides
+a decentralized
+approach to direct
+vehicular communication.
+
+LTE-V2X introduces
+cellular-derived
+sidelink communication
+and resource selection
+mechanisms.
+
+NR-V2X extends the
+communication capabilities
+available for advanced
+vehicular applications
+\cite{Molina2017,Naik2019}.
+
+However, technological
+evolution does not
+eliminate the fundamental
+challenges of vehicular
+networking.
+
+High mobility,
+channel congestion,
+wireless propagation,
+security, and
+interoperability
+remain important
+research concerns.
+
+Therefore, technology
+selection should be
+based on application
+requirements and
+scenario-specific
+evaluation rather
+than a universal
+ranking of standards.

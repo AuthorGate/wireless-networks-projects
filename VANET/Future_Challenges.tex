@@ -1,0 +1,807 @@
+
+\section{Open Research Challenges and Future Directions}
+\label{sec:future_challenges}
+
+Vehicular Ad Hoc Networks (VANETs) have evolved
+from early ad hoc communication concepts toward
+heterogeneous Vehicle-to-Everything (V2X) systems.
+Despite progress in wireless standards, routing
+protocols, and simulation frameworks, several
+technical and operational challenges remain.
+
+The highly dynamic vehicular environment makes
+it difficult to guarantee reliable communication
+under all road and traffic conditions. At the
+same time, safety-critical applications impose
+strict requirements on message delivery, latency,
+security, and interoperability
+\cite{Karagiannis2011,Zeadally2012}.
+
+This section identifies major open challenges,
+examines potential research directions, and
+discusses limitations that must be considered
+before proposed solutions can be deployed.
+
+\subsection{Communication Reliability Under High Mobility}
+
+Vehicle mobility is one of the defining
+characteristics of VANETs. Vehicles can move
+at different speeds and directions, creating
+frequent changes in network topology.
+
+Communication links may become unavailable
+when neighboring vehicles move outside
+effective radio range. In multihop communication,
+the loss of an intermediate forwarding vehicle
+may interrupt an established route.
+
+These conditions make reliable packet
+delivery difficult, particularly for
+applications that depend on timely
+information exchange
+\cite{Hartenstein2008,Zeadally2012}.
+
+\subsubsection{Limitations of Conventional Routing}
+
+Conventional mobile ad hoc routing protocols
+were designed for networks with mobile nodes,
+but vehicular movement introduces additional
+constraints related to road geometry,
+traffic behavior, and high relative speeds.
+
+Reactive protocols such as AODV may experience
+route discovery and maintenance overhead when
+network connectivity changes frequently
+\cite{Perkins1999}.
+
+Geographic protocols such as GPSR reduce
+dependence on complete end-to-end routes
+by using location information
+\cite{Karp2000}.
+
+However, geographic forwarding may encounter
+difficulties when buildings, road intersections,
+or temporary connectivity gaps prevent
+straightforward packet progress.
+
+\subsubsection{Future Research Directions}
+
+Future routing research may investigate
+adaptive mechanisms that select forwarding
+strategies according to current mobility
+and connectivity conditions.
+
+Potential approaches include mobility
+prediction, road-aware geographic routing,
+and hybrid forwarding strategies.
+
+Nevertheless, prediction errors and
+additional signaling requirements must
+be considered carefully.
+
+A more complex routing mechanism is not
+necessarily better if its computational
+or communication overhead exceeds
+the benefit it provides.
+
+\subsection{Channel Congestion and Scalability}
+
+Dense vehicular environments create
+significant challenges for wireless
+communication.
+
+Vehicles may periodically transmit
+awareness messages while simultaneously
+exchanging event-driven warnings
+and application data.
+
+As the number of communicating vehicles
+increases, the shared wireless medium
+may experience greater contention,
+interference, and resource competition.
+
+This can reduce the reliability of
+message dissemination and increase
+communication delay.
+
+\subsubsection{Congestion in Contention-Based Systems}
+
+IEEE 802.11p-based vehicular communication
+uses a contention-based channel access
+mechanism.
+
+When many nearby nodes attempt to transmit,
+the probability of overlapping channel
+access attempts may increase.
+
+As a result, communication reliability
+may deteriorate under heavily loaded
+conditions.
+
+The precise effect depends on channel
+configuration, message generation rate,
+propagation conditions, and vehicle density.
+
+\subsubsection{Resource Management in Cellular V2X}
+
+LTE-V2X and NR-V2X use resource allocation
+mechanisms that differ from traditional
+IEEE 802.11-based access
+\cite{Molina2017,Naik2019}.
+
+Autonomous resource selection can support
+direct communication without continuous
+network assistance.
+
+However, distributed selection does not
+eliminate the possibility of conflicting
+resource reservations or interference.
+
+\subsubsection{Future Research Directions}
+
+Promising research directions include
+adaptive message generation rates,
+congestion-aware resource selection,
+and application-priority mechanisms.
+
+A major design challenge is maintaining
+the timely delivery of important safety
+messages while preventing unnecessary
+channel occupancy.
+
+Future studies should evaluate these
+mechanisms under both sparse and
+dense traffic conditions.
+
+\subsection{Security and Trust Management}
+
+Security is essential because vehicular
+communication may influence driving
+decisions and transportation safety.
+
+An attacker could attempt to distribute
+false hazard information, impersonate
+another vehicle, replay outdated messages,
+or interfere with communication.
+
+Such attacks may reduce trust in
+vehicular information systems and
+create operational risks
+\cite{Zeadally2012,Karagiannis2011}.
+
+\subsubsection{Message Authentication}
+
+Authentication mechanisms can help
+receivers determine whether a message
+originates from an authorized sender.
+
+Digital signatures and credential-based
+approaches are important techniques
+for establishing message authenticity.
+
+However, authentication alone does
+not prove that the physical event
+described by a message is true.
+
+For example, a compromised but
+authenticated vehicle could still
+transmit misleading information.
+
+Therefore, message authentication
+and information plausibility checking
+address different security concerns.
+
+\subsubsection{Trust and Misbehavior Detection}
+
+Trust management seeks to assess
+the reliability of information
+received from neighboring nodes.
+
+Potential approaches include
+consistency checking, cross-validation
+using multiple observations, and
+misbehavior detection mechanisms.
+
+However, these methods introduce
+their own challenges.
+
+A vehicle may report unusual
+information because of a legitimate
+emergency rather than malicious behavior.
+
+False accusations could therefore
+reduce system availability or
+exclude legitimate participants.
+
+Future research must consider
+the balance between detection
+accuracy, computational cost,
+and resistance to manipulation.
+
+\subsection{Privacy Preservation}
+
+Vehicular communication may involve
+location information, movement patterns,
+and identifiers associated with
+participating vehicles.
+
+Repeated observations of these
+messages may allow an observer
+to infer travel behavior.
+
+Privacy is therefore an important
+consideration in vehicular
+network design.
+
+Petit et al. surveyed pseudonym
+schemes for vehicular networks
+and discussed privacy-related
+design considerations
+\cite{Petit2015}.
+
+\subsubsection{Pseudonym-Based Communication}
+
+Pseudonyms allow a vehicle to use
+temporary identifiers rather than
+continuously exposing a single
+long-term identity.
+
+Changing pseudonyms can make
+long-term tracking more difficult.
+
+However, replacing an identifier
+does not automatically guarantee
+privacy.
+
+An observer may correlate vehicle
+positions, message timing, and
+movement patterns to associate
+multiple pseudonyms with the
+same physical vehicle.
+
+\subsubsection{Privacy and Accountability Trade-Off}
+
+Vehicular systems must balance
+privacy with accountability.
+
+Drivers and passengers benefit
+from protection against unnecessary
+tracking, while security systems
+may require mechanisms for
+investigating serious misuse.
+
+Future privacy-preserving systems
+should examine how to support
+authorized accountability without
+enabling unrestricted surveillance.
+
+This challenge requires both
+technical mechanisms and
+appropriate governance policies.
+
+\subsection{Heterogeneous V2X Interoperability}
+
+Vehicular communication technologies
+have developed through multiple
+standardization paths.
+
+IEEE 802.11p, LTE-V2X, IEEE 802.11bd,
+and NR-V2X have different
+communication mechanisms and
+implementation requirements
+\cite{MacHardy2018,Naik2019}.
+
+A heterogeneous transportation
+environment may therefore contain
+vehicles using different
+radio technologies.
+
+\subsubsection{Compatibility Challenges}
+
+Vehicles equipped with incompatible
+radio interfaces may not be able
+to communicate directly.
+
+This limitation can reduce
+interoperability during
+technology transitions.
+
+Multiradio devices, gateways,
+and infrastructure-assisted
+information exchange may
+provide possible solutions.
+
+However, such approaches can
+increase equipment complexity,
+deployment cost, and
+system management requirements.
+
+\subsubsection{Future Research Directions}
+
+Future research should investigate
+interoperability architectures that
+allow heterogeneous V2X systems
+to exchange relevant information
+without assuming that all vehicles
+use the same wireless standard.
+
+Research should also consider
+message format compatibility,
+security credentials, spectrum
+policies, and service continuity.
+
+\subsection{Edge Computing for Vehicular Networks}
+
+Vehicular applications may require
+processing of information from
+multiple vehicles, roadside sensors,
+and transportation infrastructure.
+
+Sending all information to a
+distant cloud service may introduce
+communication and processing delays.
+
+Edge computing is a potential
+architectural approach in which
+selected computing resources
+are placed closer to vehicles
+and roadside infrastructure.
+
+\subsubsection{Potential Applications}
+
+Edge resources may support
+local traffic analysis,
+hazard information aggregation,
+and coordination of
+transportation services.
+
+They may also help reduce
+the need to transfer every
+raw observation to a
+remote cloud system.
+
+However, the effectiveness
+of edge processing depends
+on infrastructure placement,
+computing capacity, connectivity,
+and application requirements.
+
+\subsubsection{Open Challenges}
+
+Vehicles may move between
+different roadside service areas,
+making service continuity
+and task placement difficult.
+
+Edge nodes may also experience
+uneven workloads during
+traffic congestion.
+
+Future research should evaluate
+resource allocation, task migration,
+security, and communication
+overhead in realistic
+vehicular mobility scenarios.
+
+Edge computing should therefore
+be considered a promising
+research direction rather
+than an automatically
+effective solution.
+
+\subsection{Artificial Intelligence and Adaptive Networking}
+
+Artificial intelligence and
+machine learning have been
+investigated as potential
+tools for adaptive
+network management.
+
+In vehicular networking,
+learning-based approaches
+may be applied to mobility
+prediction, congestion
+estimation, resource
+selection, and routing.
+
+\subsubsection{Potential Benefits}
+
+Learning-based models may
+identify patterns in
+traffic conditions and
+network measurements.
+
+Such information could
+support adaptive decisions
+when communication conditions
+change over time.
+
+For example, a predictive
+model might estimate
+future connectivity or
+identify situations where
+a routing strategy is
+likely to become ineffective.
+
+\subsubsection{Limitations and Risks}
+
+Learning-based systems
+depend on the quality
+and representativeness
+of their training data.
+
+A model trained under
+one road layout or
+traffic distribution
+may not generalize
+to another environment.
+
+Additional concerns
+include computational
+overhead, model
+interpretability,
+security against
+manipulated inputs,
+and adaptation to
+unseen conditions.
+
+For safety-related
+applications, the
+behavior of a learning
+system must be evaluated
+under unusual and
+potentially dangerous
+operating conditions.
+
+Future research should
+therefore compare
+learning-based solutions
+with simpler baselines
+using reproducible
+evaluation settings.
+
+\subsection{Realistic Simulation and Reproducibility}
+
+Simulation remains a
+major evaluation method
+in vehicular networking
+research.
+
+However, simulation
+results depend strongly
+on mobility assumptions,
+wireless channel models,
+and protocol configurations.
+
+Sommer et al. demonstrated
+the importance of
+coupling network and
+road traffic simulation
+for inter-vehicle
+communication analysis
+\cite{Sommer2011}.
+
+\subsubsection{Limitations of Simplified Models}
+
+Simplified mobility
+models may overlook
+intersections, traffic
+signals, congestion,
+and realistic
+driving behavior.
+
+Similarly, simplified
+radio propagation
+models may not capture
+the effects of buildings,
+large vehicles, and
+changing line-of-sight
+conditions.
+
+These limitations
+can affect the
+interpretation of
+routing and
+communication results.
+
+\subsubsection{Future Evaluation Practices}
+
+Future studies should
+report software versions,
+scenario parameters,
+traffic generation
+models, radio settings,
+and performance
+metric definitions.
+
+Repeated experiments
+and measures of
+result variability
+can improve confidence
+in reported findings.
+
+Whenever practical,
+simulation results
+should be compared
+with experimental
+measurements or
+real-world observations.
+
+This does not imply
+that every research
+paper must conduct
+physical experiments.
+
+Rather, researchers
+should clearly
+describe the scope
+and limitations
+of the evidence
+they provide.
+
+\subsection{Deployment and Infrastructure Challenges}
+
+Large-scale vehicular
+network deployment
+requires more than
+technically capable
+wireless protocols.
+
+Practical systems
+may depend on
+roadside infrastructure,
+equipment compatibility,
+maintenance,
+and institutional
+coordination.
+
+Deployment costs
+and regional
+regulatory conditions
+can influence
+technology adoption
+\cite{MacHardy2018}.
+
+\subsubsection{Infrastructure Availability}
+
+Roadside units
+and cellular
+infrastructure
+may improve
+communication
+coverage and
+service availability.
+
+However, infrastructure
+deployment can be
+uneven across
+urban, rural,
+and highway
+environments.
+
+Solutions that depend
+on continuous
+infrastructure access
+may therefore be
+less suitable for
+areas with limited
+network coverage.
+
+\subsubsection{Gradual Technology Adoption}
+
+Vehicles remain in
+service for many
+years, meaning
+new communication
+technologies are
+unlikely to replace
+all existing equipment
+immediately.
+
+Mixed deployments
+may contain connected
+vehicles using
+different standards
+and vehicles without
+V2X communication
+capabilities.
+
+Future research
+should evaluate
+the effectiveness
+of vehicular
+applications during
+partial technology
+adoption.
+
+\subsection{Summary of Open Challenges}
+
+Table~\ref{tab:future_challenges}
+summarizes the
+principal challenges
+and potential
+research directions
+discussed in
+this section.
+
+\begin{table*}[t]
+\centering
+\caption{Open VANET Challenges and Potential Research Directions}
+\label{tab:future_challenges}
+\scriptsize
+\begin{tabular}{|p{2.8cm}|p{4.0cm}|p{4.1cm}|p{4.1cm}|}
+\hline
+\textbf{Challenge} &
+\textbf{Main Problem} &
+\textbf{Potential Research Direction} &
+\textbf{Important Limitation} \\
+\hline
+High mobility &
+Frequent changes in communication topology &
+Mobility-aware and adaptive routing &
+Prediction errors and routing overhead \\
+\hline
+Channel congestion &
+Interference and competition for radio resources &
+Adaptive message rates and resource selection &
+Possible trade-off between congestion and awareness \\
+\hline
+Security &
+False messages and malicious communication &
+Authentication and misbehavior detection &
+Authentication does not guarantee information truthfulness \\
+\hline
+Privacy &
+Tracking through location and identifiers &
+Pseudonym management and privacy-preserving protocols &
+Linkability and accountability requirements \\
+\hline
+Interoperability &
+Incompatible V2X communication technologies &
+Multiradio and gateway architectures &
+Equipment complexity and deployment cost \\
+\hline
+Edge computing &
+Distributed processing and service continuity &
+Mobility-aware task placement &
+Infrastructure and resource constraints \\
+\hline
+Artificial intelligence &
+Changing network and traffic conditions &
+Learning-based prediction and adaptive control &
+Generalization, explainability, and computational cost \\
+\hline
+Simulation realism &
+Differences between simulated and real environments &
+Coupled simulation and experimental validation &
+Modeling complexity and reproducibility \\
+\hline
+Deployment &
+Uneven infrastructure and gradual adoption &
+Hybrid architectures and phased deployment &
+Cost, regulation, and compatibility \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsection{Research Priorities}
+
+The reviewed challenges
+are interconnected.
+
+For example, an
+adaptive routing
+mechanism may improve
+connectivity but
+increase signaling
+overhead.
+
+A security mechanism
+may improve message
+authenticity while
+adding processing
+and transmission costs.
+
+An edge computing
+architecture may
+reduce dependence
+on distant services
+but introduce
+infrastructure
+management challenges.
+
+Consequently, future
+VANET research should
+avoid evaluating
+technical improvements
+in isolation.
+
+A useful research
+methodology should
+consider communication
+reliability, latency,
+security, privacy,
+scalability, and
+deployment feasibility
+together.
+
+The appropriate
+priority depends
+on the application.
+
+Safety-critical
+applications may
+place particular
+emphasis on timely
+and trustworthy
+information delivery.
+
+Information-oriented
+services may emphasize
+coverage, throughput,
+and service availability.
+
+The goal of future
+research should
+therefore be to
+develop solutions
+that satisfy
+application-specific
+requirements under
+realistic conditions.
+
+\subsection{Discussion}
+
+The evolution of
+VANET technology
+has introduced
+new communication
+capabilities, but
+it has not removed
+the fundamental
+challenges associated
+with high mobility
+and wireless
+network dynamics.
+
+Security, privacy,
+resource management,
+interoperability,
+and realistic
+performance evaluation
+remain important
+areas for research.
+
+Emerging approaches
+such as edge computing
+and learning-based
+network management
+offer potential
+opportunities.
+
+However, their
+benefits must be
+demonstrated through
+carefully designed
+and reproducible
+studies.
+
+This review identifies
+these directions
+as open research
+opportunities rather
+than presenting
+them as experimentally
+validated solutions.
+
+A successful
+vehicular networking
+system will require
+the coordinated
+development of
+communication
+technologies,
+network protocols,
+security mechanisms,
+and transportation
+applications.

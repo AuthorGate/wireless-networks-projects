@@ -1,0 +1,777 @@
+\section{Comparative Analysis of Existing VANET Research}
+\label{sec:comparative}
+
+This section presents a structured comparison of
+selected publications relevant to Vehicular Ad Hoc
+Networks (VANETs). The purpose is to identify
+major contributions, methodological differences,
+limitations, and implications for vehicular
+communication system design.
+
+This section compares findings reported in
+published studies rather than conducting a new
+experimental comparison of routing protocols.
+The simplified Python-based illustrative experiment
+presented in Section~\ref{sec:python_vanet} is
+separate from this literature comparison and does
+not provide protocol rankings or validated
+real-world VANET performance measurements.
+
+\subsection{Selection and Classification of Studies}
+
+The selected publications cover four complementary
+research perspectives: vehicular networking
+surveys, routing protocol development and
+evaluation, mobility and traffic simulation,
+and network architecture requirements.
+
+The comparison considers each publication's
+research objective, approach, principal
+contribution, and limitations.
+
+The publications were selected as representative
+foundational works rather than as an exhaustive
+or statistically systematic sample of all
+VANET literature.
+
+This distinction is important because the
+conclusions of a narrative review cannot
+be interpreted as the results of a formal
+meta-analysis.
+
+\subsection{Foundational VANET Research}
+
+\subsubsection{Hartenstein and Laberteaux (2008)}
+
+Hartenstein and Laberteaux presented a tutorial
+survey explaining the foundations of vehicular
+ad hoc networking \cite{Hartenstein2008}.
+
+Their contribution is especially important
+for understanding the relationship between
+vehicular mobility, wireless communication,
+and transportation-oriented applications.
+
+The study provides a conceptual foundation
+for identifying the distinguishing
+characteristics of VANETs.
+
+However, as a survey, it should not be
+interpreted as an experimental demonstration
+that a particular routing protocol or
+communication technology is universally
+superior to another.
+
+Its publication date also means that
+newer cellular V2X developments require
+additional sources.
+
+\subsubsection{Karagiannis et al. (2011)}
+
+Karagiannis et al. examined vehicular
+networking requirements, architectures,
+challenges, standards, and solutions
+\cite{Karagiannis2011}.
+
+Their survey connects application
+requirements with communication
+architecture and protocol design.
+
+This broad perspective is useful
+because a VANET cannot be evaluated
+only at the routing layer.
+
+For example, an application requiring
+timely hazard dissemination may impose
+different constraints from a service
+that transfers noncritical information.
+
+The study provides a structured
+foundation for understanding such
+requirements, but its coverage
+reflects the standards and
+technologies available at the
+time of publication.
+
+\subsubsection{Zeadally et al. (2012)}
+
+Zeadally et al. reviewed the status,
+results, and challenges of VANET
+research \cite{Zeadally2012}.
+
+The publication highlights the
+multidimensional nature of vehicular
+networking challenges, including
+communication reliability, mobility,
+and security.
+
+An important implication is that
+improvements in one aspect of a
+vehicular system may not eliminate
+limitations in other aspects.
+
+For instance, increasing connectivity
+does not automatically guarantee
+message trustworthiness or
+application-level reliability.
+
+The survey is useful for identifying
+research challenges, although it
+does not replace later studies
+of modern V2X deployments.
+
+\subsection{Comparative Routing Research}
+
+\subsubsection{AODV Routing}
+
+Perkins and Royer introduced
+Ad Hoc On-Demand Distance Vector
+(AODV) routing as a reactive
+approach to establishing routes
+in mobile ad hoc networks
+\cite{Perkins1999}.
+
+AODV performs route discovery
+when communication is needed,
+rather than continuously
+maintaining routes to every
+possible destination.
+
+This approach can avoid some
+unnecessary routing updates,
+but route discovery and
+maintenance remain relevant
+sources of delay and overhead.
+
+Although AODV is important
+to the development of mobile
+ad hoc routing, its original
+design should not be treated
+as proof of performance
+under every vehicular scenario.
+
+VANET mobility patterns,
+road constraints, and
+wireless conditions require
+scenario-specific evaluation.
+
+\subsubsection{AODV and DSR Performance Comparison}
+
+Perkins et al. compared AODV
+and Dynamic Source Routing (DSR)
+using simulation models that
+included medium access control
+and physical-layer behavior
+\cite{Perkins2001}.
+
+Their comparison considered
+changes in network load,
+mobility, and network size.
+
+The study demonstrated that
+two protocols with similar
+reactive routing principles
+can exhibit different
+performance characteristics
+because of their internal
+mechanisms.
+
+The authors reported that
+DSR performed favorably in
+less demanding conditions,
+while AODV showed advantages
+in more demanding scenarios.
+They also observed lower
+routing load for DSR in
+their evaluated settings
+\cite{Perkins2001}.
+
+These findings should be
+interpreted within the
+study's simulation conditions.
+
+In particular, this work
+examined mobile ad hoc
+networks and should not
+be presented as a direct
+experimental comparison
+performed in a modern
+vehicular V2X deployment.
+
+Nevertheless, it provides
+an important methodological
+lesson: routing performance
+depends on traffic load,
+mobility, and protocol
+implementation details.
+
+\subsubsection{Geographic Routing Using GPSR}
+
+Karp and Kung introduced
+Greedy Perimeter Stateless
+Routing (GPSR), which uses
+geographic positions to
+guide packet forwarding
+\cite{Karp2000}.
+
+GPSR makes forwarding
+decisions using local
+neighbor information
+and destination location.
+
+When greedy forwarding
+cannot make geographic
+progress, perimeter
+forwarding provides
+a recovery mechanism.
+
+The main conceptual
+advantage is reduced
+dependence on complete
+end-to-end route
+information.
+
+The original study
+investigated scalability
+and compared GPSR
+with another routing
+approach under simulated
+mobile wireless
+conditions \cite{Karp2000}.
+
+However, geographic
+forwarding is not
+automatically optimal
+in a vehicular road
+network.
+
+Buildings, intersections,
+positioning errors, and
+temporary connectivity
+gaps may affect the
+usefulness of geographic
+next-hop selection.
+
+Therefore, adapting
+geographic routing
+to realistic urban
+VANET environments
+requires additional
+design considerations.
+
+\subsection{Mobility and Simulation Research}
+
+\subsubsection{SUMO Traffic Simulation}
+
+Krajzewicz et al. discussed
+the development and
+applications of Simulation
+of Urban MObility (SUMO)
+\cite{Krajzewicz2012}.
+
+SUMO supports microscopic
+traffic simulation,
+including road networks,
+vehicle movement, and
+transportation-related
+behavior.
+
+Its contribution to
+vehicular networking
+research is primarily
+the representation of
+traffic mobility.
+
+It is important to
+distinguish this role
+from wireless network
+simulation.
+
+SUMO alone does not
+provide a complete
+evaluation of packet
+delivery, routing,
+or wireless interference.
+
+Consequently, researchers
+investigating VANET
+communication may need
+to combine traffic
+simulation with a
+network simulator.
+
+\subsubsection{Bidirectionally Coupled Simulation}
+
+Sommer et al. investigated
+the coupling of network
+simulation and road
+traffic simulation for
+inter-vehicle communication
+analysis \cite{Sommer2011}.
+
+Their work introduced
+a bidirectionally coupled
+approach using the
+Veins framework.
+
+The framework integrates
+OMNeT++ network simulation
+with SUMO traffic
+simulation.
+
+The study evaluated
+incident-warning
+communication approaches
+as a proof of concept
+and demonstrated the
+importance of accounting
+for interactions between
+traffic behavior and
+network communication
+\cite{Sommer2011}.
+
+This contribution is
+particularly relevant
+to applications where
+communication affects
+vehicle decisions,
+which subsequently
+change the network
+topology.
+
+Nevertheless, coupled
+simulation does not
+eliminate every
+modeling limitation.
+
+The validity of
+its results still
+depends on realistic
+traffic assumptions,
+wireless propagation
+models, and suitable
+application behavior.
+
+\subsection{Cross-Study Comparison}
+
+Table~\ref{tab:research_comparison}
+summarizes the reviewed
+publications according
+to their primary focus,
+contribution, and
+interpretation limits.
+
+\begin{table*}[t]
+\centering
+\caption{Comparison of Selected Foundational Studies Relevant to VANETs}
+\label{tab:research_comparison}
+\scriptsize
+\begin{tabular}{|p{2.7cm}|p{1.1cm}|p{2.8cm}|p{4.0cm}|p{4.4cm}|}
+\hline
+\textbf{Study} &
+\textbf{Year} &
+\textbf{Focus} &
+\textbf{Main Contribution} &
+\textbf{Scope or Limitation} \\
+\hline
+Hartenstein and Laberteaux
+\cite{Hartenstein2008} &
+2008 &
+VANET fundamentals &
+Tutorial overview of vehicular ad hoc networking &
+Survey foundation; predates newer V2X technologies \\
+\hline
+Karagiannis et al.
+\cite{Karagiannis2011} &
+2011 &
+Architectures and standards &
+Integrated review of requirements, challenges, and solutions &
+Technology coverage reflects publication period \\
+\hline
+Zeadally et al.
+\cite{Zeadally2012} &
+2012 &
+VANET challenges &
+Review of networking status and major technical issues &
+Broad survey rather than a controlled protocol comparison \\
+\hline
+Perkins and Royer
+\cite{Perkins1999} &
+1999 &
+Reactive routing &
+Description of AODV route discovery and maintenance &
+General mobile ad hoc routing; not a VANET-specific field trial \\
+\hline
+Perkins et al.
+\cite{Perkins2001} &
+2001 &
+AODV versus DSR &
+Simulation-based comparison under varying network conditions &
+Results depend on simulated MANET scenarios \\
+\hline
+Karp and Kung
+\cite{Karp2000} &
+2000 &
+Geographic routing &
+GPSR greedy and perimeter forwarding mechanisms &
+Geographic assumptions require care in vehicular environments \\
+\hline
+Krajzewicz et al.
+\cite{Krajzewicz2012} &
+2012 &
+Traffic simulation &
+Development and applications of SUMO &
+Traffic modeling is distinct from wireless network evaluation \\
+\hline
+Sommer et al.
+\cite{Sommer2011} &
+2011 &
+Coupled simulation &
+Integration of network and traffic simulation through Veins &
+Results remain dependent on modeling assumptions \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsection{Comparative Analysis by Research Dimension}
+
+\subsubsection{Routing Information Requirements}
+
+The reviewed routing studies
+illustrate different ways
+of acquiring information
+for forwarding decisions.
+
+AODV relies on on-demand
+route discovery and
+route maintenance
+\cite{Perkins1999}.
+
+GPSR relies primarily
+on local geographic
+neighbor information
+\cite{Karp2000}.
+
+These differences affect
+the type and amount
+of information that
+network nodes must
+maintain.
+
+Neither mechanism
+guarantees superior
+performance across
+all road environments.
+
+The suitability of
+a routing strategy
+depends on connectivity,
+positioning accuracy,
+mobility, and traffic load.
+
+\subsubsection{Mobility Sensitivity}
+
+The comparison between
+AODV and DSR demonstrates
+that protocol behavior
+changes with mobility
+and network load
+\cite{Perkins2001}.
+
+For vehicular systems,
+this sensitivity becomes
+especially important
+because communication
+neighbors may change
+rapidly.
+
+A protocol evaluated
+under a generic mobile
+ad hoc mobility model
+may behave differently
+under constrained
+urban road movement.
+
+Consequently, the
+selection of a
+mobility model is
+not merely a
+simulation detail.
+
+It is part of the
+experimental assumptions
+that determine how
+results should be
+interpreted.
+
+\subsubsection{Simulation Realism}
+
+The SUMO and Veins
+literature illustrates
+two complementary
+research objectives.
+
+SUMO emphasizes
+traffic behavior
+and vehicle movement
+\cite{Krajzewicz2012}.
+
+Veins connects
+traffic simulation
+with communication
+simulation
+\cite{Sommer2011}.
+
+This distinction
+matters because
+realistic movement
+alone does not
+guarantee accurate
+wireless modeling.
+
+Similarly, a detailed
+network simulator
+cannot fully represent
+vehicular behavior
+without appropriate
+mobility inputs.
+
+A credible VANET
+evaluation should
+therefore justify
+both mobility
+assumptions and
+communication models.
+
+\subsubsection{Application Requirements}
+
+The broader VANET
+surveys indicate
+that communication
+requirements depend
+on the target
+application
+\cite{Hartenstein2008,Karagiannis2011}.
+
+Safety-oriented
+applications emphasize
+timely and reliable
+information delivery.
+
+Information-oriented
+services may place
+greater emphasis
+on throughput,
+availability,
+or coverage.
+
+Accordingly,
+a protocol cannot
+be declared optimal
+using a single
+performance metric.
+
+A high-throughput
+configuration may
+not necessarily
+provide the lowest
+warning-message
+delay.
+
+Similarly,
+a routing mechanism
+with low control
+overhead may still
+experience delivery
+failures in sparse
+networks.
+
+\subsection{Interpretation of Research Findings}
+
+The reviewed publications
+do not constitute
+a single standardized
+benchmark.
+
+They differ in
+research questions,
+network models,
+application contexts,
+and evaluation methods.
+
+For example,
+the routing comparison
+by Perkins et al.
+focuses on mobile
+ad hoc routing
+\cite{Perkins2001},
+whereas Sommer et al.
+investigate the
+interaction between
+traffic simulation
+and communication
+\cite{Sommer2011}.
+
+Their findings
+cannot be combined
+into a numerical
+ranking without
+a common evaluation
+framework.
+
+The appropriate
+conclusion is
+therefore qualitative:
+different studies
+provide evidence
+about different
+parts of the
+vehicular networking
+problem.
+
+This is not a
+weakness of the
+literature itself.
+Rather, it reflects
+the fact that VANETs
+combine several
+interdependent
+technical domains.
+
+\subsection{Research Gaps Identified by the Review}
+
+The comparison suggests
+several directions
+where further
+investigation is
+valuable.
+
+\subsubsection{Scenario-Specific Routing Evaluation}
+
+Routing studies should
+consider the differences
+between general mobile
+ad hoc environments
+and road-constrained
+vehicular mobility.
+
+Urban intersections,
+highway movement,
+obstacles, and
+traffic density
+may change the
+relative performance
+of routing approaches.
+
+\subsubsection{Consistent Performance Metrics}
+
+Comparative research
+would benefit from
+consistent definitions
+of packet delivery,
+delay, routing overhead,
+and application success.
+
+Without consistent
+definitions, reported
+performance values
+may not describe
+equivalent outcomes.
+
+\subsubsection{Reproducible Simulation Settings}
+
+Studies should document
+mobility scenarios,
+communication models,
+protocol versions,
+traffic generation,
+and parameter choices.
+
+This information
+helps other researchers
+understand whether
+results can be
+reproduced or
+meaningfully compared.
+
+\subsubsection{Integrated Evaluation}
+
+Future evaluation
+should consider
+routing performance,
+wireless reliability,
+mobility behavior,
+and application
+requirements together.
+
+This integrated
+perspective is
+consistent with
+the motivation
+for coupled
+simulation
+\cite{Sommer2011}.
+
+\subsection{Discussion}
+
+The comparative
+analysis demonstrates
+that VANET research
+cannot be reduced
+to selecting a
+single routing
+protocol or
+simulation tool.
+
+Foundational surveys
+provide architectural
+and application
+context.
+
+Routing studies
+explain the
+trade-offs among
+forwarding strategies.
+
+Traffic simulation
+studies contribute
+mobility modeling,
+while coupled
+simulation frameworks
+connect mobility
+with communication.
+
+Taken together,
+these contributions
+support an important
+conclusion: VANET
+performance should
+be evaluated
+according to the
+specific communication
+environment and
+application objective.
+
+The comparative synthesis in
+this section is based on
+existing publications and
+does not constitute an original
+experimental comparison of
+routing protocols. The separate
+illustrative Python experiment
+in Section~\ref{sec:python_vanet}
+demonstrates basic performance
+metrics under simplified
+assumptions, without validating
+the comparative findings above.
+
+Further investigation
+of modern vehicular
+communication standards,
+security mechanisms,
+and deployment
+constraints is
+needed to extend
+this foundational
+comparison.
+8 ms
