@@ -1,0 +1,161 @@
+
+\documentclass[a4paper,10pt]{IEEEtran}
+
+%================================================
+% Paper Information
+%================================================
+
+\newcommand{\DocTitleText}{Vehicular Ad Hoc Networks (VANET)}
+
+\newcommand{\DocAuthorBlock}{
+\IEEEauthorblockA{Eman Bany Odeh}
+}
+
+\newcommand{\DocAffiliation}{
+\IEEEauthorblockN{
+Faculty of Information Technology and
+Artificial Intelligence,
+An-Najah National University, Palestine
+}
+}
+
+\newcommand{\DocEmails}{
+Email: s12114473@stu.najah.edu
+}
+
+%================================================
+% Packages
+%================================================
+
+\usepackage{silence}
+\WarningFilter{latex}{Command \showhyphens has changed}
+\WarningFilter{caption}{Unknown document class}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{balance}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+
+\let\labelindent\relax
+
+\usepackage{mathtools,bm}
+\usepackage{array,multirow,booktabs}
+\usepackage{hyphenat}
+\usepackage{caption}
+\usepackage{microtype}
+\usepackage{psfrag}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+
+%================================================
+% Custom Definitions
+%================================================
+
+\input{My DEF}
+
+\microtypesetup{stretch=20,shrink=20}
+
+\color{black!80}
+
+\makeatletter
+\def\tablename{Table}
+\makeatother
+
+\setlength{\columnsep}{16pt}
+
+%================================================
+% Begin Document
+%================================================
+
+\begin{document}
+
+%================================================
+% Title and Author
+%================================================
+
+\title{\DocTitleText}
+
+\author{
+\DocAuthorBlock\\
+\DocAffiliation\\
+\DocEmails
+}
+
+\maketitle
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+%================================================
+% Abstract
+%================================================
+
+\input{Abstract}
+
+%================================================
+% Section I: Introduction
+%================================================
+
+\input{Introduction}
+
+%================================================
+% Section II: VANET Architecture
+%================================================
+
+\input{System_Description}
+
+%================================================
+% Section III: Routing Protocols,
+% Applications, and Challenges
+%================================================
+
+\input{CROSS_LAYER_OPTIMIZATION}
+
+%================================================
+% Section IV: Simulation Frameworks
+% and Performance Evaluation
+%================================================
+
+\input{Performance_Analysis}
+
+%================================================
+% Section V: Comparative Analysis
+%================================================
+
+\input{Comparative_Analysis}
+
+%================================================
+% Section VI: Modern V2X Technologies
+%================================================
+
+\input{Modern_V2X_Technologies}
+
+%================================================
+% Section VII: Open Research Challenges
+% and Future Directions
+%================================================
+
+\input{Future_Challenges}
+
+%================================================
+% Section VIII: Conclusions
+%================================================
+
+\input{CONCLUSIONS}
+
+%================================================
+% References
+%================================================
+
+\bibliographystyle{IEEEtran}
+\bibliography{References}
+
+%================================================
+% End Document
+%================================================
+
+\end{document}

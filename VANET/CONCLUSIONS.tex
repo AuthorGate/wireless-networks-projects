@@ -1,0 +1,187 @@
+
+\section{Conclusions and Future Work}
+\label{sec:5}
+
+Vehicular Ad Hoc Networks (VANETs) are an
+important component of Intelligent
+Transportation Systems (ITS), enabling
+communication among vehicles, roadside
+infrastructure, and other transportation
+entities. These communication capabilities
+support applications related to road safety,
+traffic management, cooperative driving,
+and transportation efficiency.
+
+This paper presented a literature-based
+review of VANET architectures, communication
+models, routing protocols, simulation
+frameworks, performance evaluation methods,
+and emerging V2X technologies. The review
+examined Vehicle-to-Vehicle (V2V),
+Vehicle-to-Infrastructure (V2I),
+Vehicle-to-Pedestrian (V2P), and
+Vehicle-to-Network (V2N) communication
+as important components of the broader
+Vehicle-to-Everything (V2X) concept.
+
+The analysis of routing protocols highlighted
+the trade-offs among proactive, reactive,
+and geographic routing approaches.
+Proactive protocols maintain routing
+information in advance but may introduce
+continuous control overhead. Reactive
+protocols discover routes when needed,
+which can reduce unnecessary route
+maintenance but may introduce route
+discovery delays. Geographic routing
+uses location information to support
+forwarding decisions, although its
+effectiveness depends on positioning
+accuracy, connectivity, and road
+topology.
+
+The comparative analysis of published
+studies further demonstrated that
+routing performance cannot be assessed
+independently of the operating
+environment. Vehicle density, mobility
+patterns, road layouts, communication
+conditions, and application requirements
+can influence the relative suitability
+of different approaches. Therefore,
+no single routing protocol should be
+considered universally optimal for
+all VANET scenarios.
+
+This paper also reviewed simulation
+and evaluation tools, including SUMO,
+OMNeT++, Veins, and NS-3. Performance
+metrics such as packet delivery ratio,
+end-to-end delay, throughput, packet
+loss ratio, and routing overhead were
+discussed as important indicators of
+network behavior. The review emphasized
+that meaningful comparisons require
+consistent simulation assumptions,
+realistic mobility models, and clearly
+defined evaluation metrics.
+
+To complement the literature review,
+a simplified Python-based illustrative
+experiment was implemented to examine
+packet delivery ratio (PDR) and average
+communication delay under different
+vehicle counts.
+
+The experiment evaluated five scenarios
+with 10, 20, 30, 40, and 50 vehicles
+using a simplified probabilistic
+communication model.
+
+The generated PDR values ranged from
+21.80\% to 37.20\%, while the estimated
+average communication delay increased
+from 15.33 ms for 10 vehicles to
+35.97 ms for 50 vehicles.
+
+The results were presented using a
+numerical table and two graphical
+visualizations, illustrating how
+changes in vehicle count can influence
+the performance indicators produced
+by the selected model.
+
+However, these results are dependent
+on the assumptions and mathematical
+rules used in the experiment.
+The implementation does not include
+realistic vehicle mobility, detailed
+wireless channel behavior, or
+established VANET routing protocols.
+Therefore, the results should be
+interpreted as an educational
+illustration rather than validated
+measurements of real-world
+vehicular network performance.
+
+Furthermore, the evolution of vehicular
+communication technologies was examined
+through IEEE 802.11p-based systems,
+LTE-V2X, IEEE 802.11bd, and 5G NR-V2X.
+These technologies offer different
+communication mechanisms and resource
+management approaches. Their suitability
+depends on deployment conditions,
+application requirements, infrastructure
+availability, and interoperability
+considerations rather than technological
+generation alone.
+
+Despite continued development, VANETs
+face several unresolved challenges.
+High mobility, unstable connectivity,
+wireless channel congestion, security
+attacks, privacy concerns, and
+heterogeneous technology deployment
+remain important obstacles to
+reliable operation.
+
+Future research should investigate
+mobility-aware routing, congestion
+management, secure and privacy-preserving
+communication, and interoperability
+between different V2X technologies.
+Edge computing and artificial
+intelligence may also provide
+opportunities for adaptive resource
+management and network optimization.
+However, such approaches require
+careful evaluation of computational
+overhead, generalization, security,
+and practical deployment constraints.
+
+An additional research priority is
+the development of reproducible
+evaluation methodologies that combine
+realistic traffic mobility,
+wireless communication models,
+and clearly documented experimental
+configurations. Such methodologies
+can improve the reliability and
+comparability of findings reported
+across different studies.
+
+Future work may also extend the
+illustrative Python experiment by
+integrating realistic vehicle
+mobility using SUMO and detailed
+wireless network simulation using
+NS-3 or OMNeT++.
+
+Such an extension could support
+more realistic investigations of
+packet delivery, communication
+delay, channel congestion, and
+routing protocol performance
+under different traffic conditions.
+
+Overall, this paper combines a
+structured literature-based review
+with a reproducible illustrative
+Python experiment. Its contribution
+lies in organizing established
+research, comparing important
+technical approaches, identifying
+open challenges, and demonstrating
+basic performance evaluation concepts.
+
+VANETs provide a foundation
+for increasingly connected
+transportation systems. Their
+successful development will depend
+not only on advances in wireless
+communication, but also on the
+integration of dependable routing,
+security, privacy protection,
+realistic evaluation, and
+practical deployment strategies.
