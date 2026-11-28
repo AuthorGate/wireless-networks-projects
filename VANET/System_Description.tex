@@ -1,0 +1,556 @@
+
+\section{VANET Architecture and Communication Technologies}
+\label{sec:2}
+
+Vehicular Ad Hoc Networks (VANETs) constitute a
+specialized class of wireless mobile networks
+designed to support communication among vehicles,
+roadside infrastructure, and other road users.
+Their architecture combines mobile communication
+nodes, fixed infrastructure, wireless access
+technologies, and application-level services
+\cite{Karagiannis2011}.
+
+Unlike conventional mobile ad hoc networks,
+vehicular networks operate in environments
+constrained by road geometry, traffic regulations,
+vehicle mobility, and rapidly changing wireless
+connectivity.
+
+The design of a VANET must accommodate diverse
+communication requirements. Safety applications
+typically prioritize timely and reliable
+information dissemination, whereas traffic
+management and information services may require
+broader coverage, higher data capacity, or
+infrastructure connectivity. Consequently,
+vehicular communication architecture must
+consider mobility, scalability, interoperability,
+and security across multiple system layers
+\cite{Karagiannis2011}.
+
+\subsection{Fundamental VANET Architecture}
+\label{sec:2A}
+
+A typical VANET consists of vehicles equipped
+with communication capabilities, roadside
+communication equipment, and supporting
+transportation or network infrastructure.
+Vehicles can exchange information directly
+or through infrastructure-assisted connections
+\cite{Hartenstein2008}.
+
+\subsubsection{On-Board Units}
+
+An On-Board Unit (OBU) is a communication
+component installed inside a vehicle.
+It provides wireless connectivity and
+supports the transmission and reception
+of vehicular messages. Depending on the
+system design, an OBU may interact with
+vehicle sensors, positioning systems,
+processing units, and in-vehicle
+communication interfaces.
+
+OBUs can support periodic awareness
+messages as well as event-triggered
+notifications. Periodic messages provide
+information about vehicle state, such
+as position, speed, and movement
+direction, while event-triggered
+messages may communicate hazardous
+conditions or unexpected road events.
+
+The effectiveness of an OBU depends
+on several factors, including wireless
+channel conditions, transmission
+parameters, positioning accuracy,
+message processing capability,
+and security mechanisms
+\cite{Zeadally2012}.
+
+\subsubsection{Roadside Units}
+
+Roadside Units (RSUs) are fixed
+communication nodes deployed at
+selected locations along transportation
+infrastructure, including intersections,
+highways, and urban roads.
+
+An RSU may exchange information
+with nearby vehicles, distribute
+traffic-related notifications,
+and provide connectivity to
+transportation management systems
+or external communication networks.
+
+RSU deployment introduces important
+design considerations. Increasing
+the number of roadside units may
+improve infrastructure availability,
+but it also increases deployment
+and maintenance costs. The appropriate
+deployment density depends on
+road characteristics, traffic
+conditions, and service requirements
+\cite{Karagiannis2011}.
+
+\subsubsection{Application Units and Vehicle Sensors}
+
+Application Units (AUs) represent
+the processing or software components
+responsible for providing vehicular
+services. Depending on the architecture,
+these functions may be integrated
+with the OBU or implemented using
+separate in-vehicle systems.
+
+Vehicle sensors and positioning
+technologies can provide information
+about movement, location, and
+surrounding conditions. This
+information may support applications
+such as collision warnings,
+traffic monitoring, and
+cooperative awareness.
+
+However, the accuracy and
+availability of sensor information
+can influence the quality of
+vehicular communication services.
+Incorrect or outdated information
+may reduce the usefulness of
+safety-related messages
+\cite{Zeadally2012}.
+
+\subsection{Communication Architecture}
+\label{sec:2B}
+
+Vehicular communication is commonly
+described through several interaction
+models. These models differ according
+to the communicating entities,
+infrastructure requirements,
+and intended applications.
+
+\subsubsection{Vehicle-to-Vehicle Communication}
+
+Vehicle-to-Vehicle (V2V) communication
+allows vehicles to exchange information
+directly with nearby vehicles through
+compatible wireless interfaces.
+
+V2V communication is particularly
+relevant to cooperative awareness
+and road safety applications.
+For example, a vehicle detecting
+emergency braking may transmit
+information to neighboring vehicles,
+allowing them to become aware
+of a potential hazard.
+
+Direct communication can reduce
+dependence on centralized
+infrastructure for local
+information exchange. However,
+its performance is influenced
+by communication range,
+channel congestion, obstacles,
+and the relative movement
+of vehicles \cite{Hartenstein2008}.
+
+\subsubsection{Vehicle-to-Infrastructure Communication}
+
+Vehicle-to-Infrastructure (V2I)
+communication enables information
+exchange between vehicles and
+roadside communication systems.
+
+Through V2I communication,
+vehicles may receive traffic
+updates, road condition
+information, or infrastructure
+messages. Roadside systems
+may also collect information
+from connected vehicles
+to support traffic management.
+
+Unlike direct V2V communication,
+V2I services depend on the
+availability and capabilities
+of the deployed infrastructure.
+Coverage limitations and
+deployment costs are therefore
+important considerations
+\cite{Karagiannis2011}.
+
+\subsubsection{Vehicle-to-Pedestrian Communication}
+
+Vehicle-to-Pedestrian (V2P)
+communication involves information
+exchange between vehicles and
+pedestrians or other vulnerable
+road users equipped with
+compatible communication devices.
+
+Potential applications include
+warnings about approaching
+vehicles and increased awareness
+at intersections or pedestrian
+crossings.
+
+Practical V2P systems must
+consider device energy consumption,
+positioning uncertainty,
+communication availability,
+and privacy requirements.
+
+\subsubsection{Vehicle-to-Network Communication}
+
+Vehicle-to-Network (V2N)
+communication provides connectivity
+between vehicles and external
+network services, commonly through
+cellular infrastructure.
+
+V2N connectivity can support
+cloud-based traffic information,
+remote services, and access
+to transportation management
+platforms.
+
+Unlike direct local communication,
+network-assisted services may
+depend on cellular coverage,
+network congestion, and
+end-to-end service availability
+\cite{Karagiannis2011}.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparison of VANET Communication Models}
+\label{tab:communication_models}
+\footnotesize
+\begin{tabular}{|p{1.0cm}|p{2.0cm}|p{3.4cm}|}
+\hline
+\textbf{Mode} &
+\textbf{Entities} &
+\textbf{Typical Applications} \\
+\hline
+V2V &
+Vehicle--Vehicle &
+Cooperative awareness and hazard warnings \\
+\hline
+V2I &
+Vehicle--Infrastructure &
+Traffic information and roadside services \\
+\hline
+V2P &
+Vehicle--Pedestrian &
+Vulnerable road-user awareness \\
+\hline
+V2N &
+Vehicle--Network &
+Cloud services and network-assisted information \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Wireless Communication Technologies}
+\label{sec:2C}
+
+Different wireless technologies have
+been developed or adapted to support
+vehicular communication. Their
+characteristics vary in terms
+of channel access, network
+architecture, coverage, and
+communication requirements
+\cite{Karagiannis2011}.
+
+\subsubsection{IEEE 802.11p and DSRC}
+
+IEEE 802.11p introduced amendments
+to wireless local area networking
+for operation in vehicular
+environments. It has been widely
+associated with Dedicated
+Short-Range Communications (DSRC)
+and research on direct vehicular
+communication.
+
+The technology supports wireless
+information exchange between
+compatible devices without
+requiring a conventional
+access-point association process
+for every local interaction.
+
+However, communication performance
+may be affected by contention
+for shared wireless resources,
+especially when many vehicles
+attempt to transmit simultaneously.
+
+The IEEE 802.11p-related approach
+has also influenced vehicular
+communication systems based
+on the European ITS-G5 framework
+\cite{Karagiannis2011}.
+
+\subsubsection{Cellular Vehicle-to-Everything}
+
+Cellular Vehicle-to-Everything
+(C-V2X) provides an alternative
+family of technologies for
+vehicular communication.
+
+LTE-V2X includes a direct
+communication interface commonly
+known as PC5, as well as
+cellular network connectivity
+through the conventional
+network interface.
+
+Direct communication can support
+local information exchange,
+while network-assisted
+communication enables access
+to broader services.
+
+C-V2X systems must address
+resource allocation, interference,
+mobility, and coexistence
+with other wireless services.
+
+\subsubsection{5G NR-V2X}
+
+New Radio Vehicle-to-Everything
+(NR-V2X) extends cellular
+vehicular communication
+capabilities using technologies
+associated with 5G New Radio.
+
+NR-V2X is designed to support
+a broader range of vehicular
+use cases, including advanced
+cooperative driving scenarios.
+
+The requirements of these
+applications may involve
+high reliability, low latency,
+and the exchange of more
+complex information between
+connected road users.
+
+Nevertheless, performance
+depends on deployment
+conditions, network
+configuration, and
+application requirements.
+
+\begin{table}[htbp]
+\centering
+\caption{Qualitative Comparison of Vehicular Wireless Technologies}
+\label{tab:wireless_technologies}
+\footnotesize
+\begin{tabular}{|p{1.7cm}|p{2.2cm}|p{2.5cm}|}
+\hline
+\textbf{Technology} &
+\textbf{Main Approach} &
+\textbf{Key Consideration} \\
+\hline
+IEEE 802.11p &
+Direct wireless access &
+Shared-channel contention \\
+\hline
+LTE-V2X &
+Cellular-based direct and network communication &
+Radio resource management \\
+\hline
+NR-V2X &
+Advanced cellular vehicular communication &
+Support for demanding V2X use cases \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Communication Protocol Architecture}
+\label{sec:2D}
+
+Vehicular communication systems
+use protocol architectures
+that organize functions across
+different layers. Although
+specific implementations vary,
+communication generally involves
+physical transmission,
+medium access, networking,
+transport, facilities,
+and application-level services.
+
+\subsubsection{Physical Layer}
+
+The physical layer is responsible
+for transmitting information
+over wireless channels.
+Its operation is affected
+by signal propagation,
+interference, mobility,
+and environmental obstacles
+\cite{Zeadally2012}.
+
+Vehicular wireless channels
+may experience rapid variations
+because the transmitter,
+receiver, or surrounding
+objects are moving.
+
+\subsubsection{Medium Access Control}
+
+The Medium Access Control
+(MAC) layer manages access
+to shared wireless resources.
+
+In vehicular environments,
+multiple nodes may attempt
+to transmit messages over
+the same channel. Effective
+channel access mechanisms
+are therefore important
+for reducing collisions,
+contention, and delays
+\cite{Zeadally2012}.
+
+\subsubsection{Networking and Transport}
+
+Networking mechanisms support
+message forwarding and
+information dissemination
+between communication nodes.
+
+Depending on the application,
+information may be distributed
+through direct broadcast,
+geographic forwarding,
+or infrastructure-assisted
+communication.
+
+Transport mechanisms and
+application protocols must
+also account for differences
+between time-critical
+safety messages and
+less urgent information
+services \cite{Karagiannis2011}.
+
+\subsubsection{Facilities and Applications}
+
+The facilities and application
+layers support the generation,
+processing, and interpretation
+of vehicular information.
+
+Examples include cooperative
+awareness information and
+event-driven hazard
+notifications. Such services
+depend on suitable message
+formats, processing mechanisms,
+and security protections.
+
+\subsection{Mobility and Network Characteristics}
+\label{sec:2E}
+
+The mobility characteristics
+of vehicles distinguish VANETs
+from many other wireless networks.
+Vehicle movement is constrained
+by road geometry, traffic signals,
+speed limits, and driving behavior.
+
+\textbf{Dynamic Topology:}
+As vehicles enter and leave
+communication range, network
+connections change over time.
+This creates difficulties
+for maintaining stable routes.
+
+\textbf{Variable Vehicle Density:}
+Sparse traffic may result
+in disconnected network
+segments, whereas dense
+traffic may increase
+wireless channel contention.
+
+\textbf{Urban and Highway Environments:}
+Urban roads contain intersections,
+buildings, and obstacles
+that can affect propagation.
+Highway scenarios often
+involve higher speeds and
+rapid changes in relative
+vehicle positions.
+
+\textbf{Short Link Duration:}
+The duration of a direct
+wireless link depends on
+relative mobility,
+communication range,
+and propagation conditions.
+Short-lived links may
+reduce the effectiveness
+of routing mechanisms
+that require stable
+end-to-end paths.
+
+These characteristics
+demonstrate why communication
+protocols designed for
+conventional networks
+may require adaptation
+before being applied
+to vehicular environments
+\cite{Hartenstein2008,Zeadally2012}.
+
+\subsection{Architecture Design Considerations}
+\label{sec:2F}
+
+A reliable VANET architecture
+must balance several
+potentially competing
+design objectives.
+
+First, safety-related
+communication requires
+timely message delivery
+and dependable information
+exchange. Second, large
+vehicular populations
+require scalable
+communication mechanisms
+that limit unnecessary
+channel usage.
+
+Third, interoperability
+between vehicles,
+infrastructure, and
+communication technologies
+is important for
+practical deployment.
+Finally, authentication,
+message integrity,
+and privacy protection
+must be considered
+throughout the system.
+
+The selection of
+communication technology
+and network architecture
+should therefore depend
+on the intended application,
+mobility environment,
+deployment constraints,
+and required level
+of communication reliability
+\cite{Karagiannis2011,Zeadally2012}.

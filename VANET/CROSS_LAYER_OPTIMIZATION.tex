@@ -1,0 +1,1075 @@
+
+\section{Routing Protocols, Applications, and Challenges}
+\label{sec:3}
+
+Routing and information dissemination are fundamental
+functions of Vehicular Ad Hoc Networks (VANETs).
+Unlike traditional wireless networks, VANETs operate
+under rapidly changing connectivity conditions,
+high node mobility, and nonuniform vehicle
+distributions. These characteristics make the
+selection of appropriate routing mechanisms
+particularly challenging \cite{Hartenstein2008,Zeadally2012}.
+
+A routing protocol determines how information
+is forwarded between communication nodes.
+In vehicular environments, a suitable routing
+strategy must consider not only network
+connectivity but also road topology, vehicle
+movement, communication delay, and application
+requirements. A protocol that performs well
+in a relatively stable network may experience
+performance degradation when vehicles move
+at high speeds or wireless links become
+temporarily unavailable.
+
+Furthermore, not all vehicular applications
+require conventional end-to-end routing.
+Many safety applications rely on local
+broadcasting or geographic information
+dissemination, while other services may
+benefit from multihop forwarding or
+infrastructure-assisted communication.
+Consequently, VANET research includes
+routing, broadcasting, geographic
+forwarding, and delay-tolerant approaches
+\cite{Karagiannis2011}.
+
+\subsection{Routing Requirements in VANETs}
+\label{sec:3A}
+
+The design of vehicular routing mechanisms
+is influenced by several important
+network characteristics.
+
+\subsubsection{High Mobility}
+
+Vehicles continuously change their positions
+and may move at different speeds and
+directions. As a result, the set of
+neighboring vehicles can change rapidly.
+
+A communication path that is valid
+at one moment may become unavailable
+shortly afterward. Routing protocols
+must therefore adapt to mobility
+without generating excessive
+control traffic.
+
+\subsubsection{Dynamic Network Topology}
+
+The network topology depends on
+the positions and communication
+ranges of participating vehicles.
+
+When vehicles enter or leave
+communication range, wireless
+links are established or broken.
+This may cause route failures,
+packet loss, and additional
+route discovery operations.
+
+\subsubsection{Variable Traffic Density}
+
+Vehicle density changes according
+to road type, traffic conditions,
+and time of day.
+
+In sparse networks, communication
+may be interrupted because
+suitable forwarding vehicles
+are unavailable. In dense
+networks, excessive transmissions
+may increase channel contention
+and packet collisions.
+
+\subsubsection{Quality of Service}
+
+Different applications impose
+different communication requirements.
+For example, safety-related
+notifications generally require
+timely and reliable delivery,
+whereas some information services
+can tolerate longer delays.
+
+Routing mechanisms should therefore
+consider Quality of Service (QoS)
+requirements such as latency,
+reliability, throughput,
+and communication overhead
+\cite{Zeadally2012,Karagiannis2011}.
+
+\subsection{Classification of Routing Protocols}
+\label{sec:3B}
+
+VANET routing protocols can be
+classified according to the
+information used to select
+forwarding paths and the
+mechanisms employed to
+maintain connectivity.
+
+The main categories include
+topology-based routing,
+position-based routing,
+broadcast-based dissemination,
+and delay-tolerant forwarding.
+
+\subsubsection{Topology-Based Routing}
+
+Topology-based protocols
+use information about
+network connections
+to establish forwarding paths.
+
+They are commonly divided
+into proactive and reactive
+routing protocols.
+
+\paragraph{Proactive Routing}
+
+Proactive routing protocols
+maintain routing information
+continuously, even when
+particular routes are not
+currently required.
+
+Examples include
+Destination-Sequenced
+Distance Vector (DSDV)
+and Optimized Link State
+Routing (OLSR).
+
+DSDV is based on
+distance-vector routing
+and uses sequence numbers
+to help prevent routing loops.
+Routing information is
+updated as the network changes.
+
+OLSR uses link-state
+information and a mechanism
+based on Multipoint Relays
+(MPRs) to reduce the
+overhead associated with
+flooding control messages.
+
+The main advantage of
+proactive routing is that
+routes may already be
+available when data
+transmission begins.
+
+However, periodic updates
+consume wireless resources.
+In highly mobile vehicular
+environments, frequent
+topology changes may
+increase control overhead
+and reduce route stability.
+
+\paragraph{Reactive Routing}
+
+Reactive protocols establish
+routes when communication
+is required rather than
+maintaining complete routing
+information continuously.
+
+Two commonly studied examples
+are Ad Hoc On-Demand Distance
+Vector (AODV) and Dynamic
+Source Routing (DSR).
+
+AODV discovers routes
+through route request
+and route reply procedures.
+When a route is no longer
+valid, route maintenance
+mechanisms are used to
+handle the failure.
+
+DSR uses source routing,
+where the sender may
+include route information
+in the packet header.
+Route discovery and
+route maintenance are
+important components
+of its operation.
+
+Reactive routing can
+reduce unnecessary
+periodic routing traffic.
+Nevertheless, route
+discovery introduces
+additional delay.
+
+Furthermore, frequent
+link failures may
+cause repeated route
+discovery procedures,
+which can increase
+overhead in high-mobility
+environments.
+
+\subsubsection{Position-Based Routing}
+
+Position-based routing
+uses geographic location
+information to support
+packet forwarding.
+
+Instead of relying
+entirely on a maintained
+end-to-end route, a node
+may select a forwarding
+neighbor according to
+its geographic position
+relative to the destination.
+
+Greedy Perimeter Stateless
+Routing (GPSR) is a
+well-known example
+of geographic routing.
+
+In greedy forwarding,
+a packet is forwarded
+to a neighbor that
+provides geographic
+progress toward
+the destination.
+
+A simplified next-hop
+selection rule is
+
+\begin{equation}
+n^{*} =
+\arg\min_{\substack{
+n \in \mathcal{N}(i)\\
+d(n,D)<d(i,D)
+}}
+d(n,D),
+\label{eq:greedy}
+\end{equation}
+
+where $\mathcal{N}(i)$
+represents the neighboring
+nodes of vehicle $i$,
+$D$ denotes the destination,
+and $d(n,D)$ is the
+geographic distance between
+neighbor $n$ and destination $D$.
+
+The selection is possible
+only when at least one
+neighbor provides positive
+progress toward the destination.
+Otherwise, greedy forwarding
+reaches a local minimum,
+and an alternative recovery
+mechanism may be required.
+
+Position-based routing
+can reduce dependence
+on continuously maintained
+global routing tables.
+However, it requires
+sufficiently accurate
+location information.
+
+Its performance may
+also be affected by
+road geometry, obstacles,
+and local connectivity
+gaps. Geographic proximity
+does not always guarantee
+a usable wireless link.
+
+\subsubsection{Broadcast-Based Dissemination}
+
+Broadcast communication
+is particularly important
+for safety-related VANET
+applications.
+
+A vehicle may transmit
+a warning message to
+multiple nearby vehicles
+without establishing
+a separate route to
+every receiver.
+
+However, uncontrolled
+rebroadcasting can
+create a broadcast
+storm, especially
+in dense networks.
+
+Broadcast storms
+may increase redundant
+transmissions, channel
+contention, and
+packet collisions.
+
+Possible mitigation
+approaches include
+probabilistic forwarding,
+distance-based forwarding,
+and selective rebroadcasting.
+
+\subsubsection{Delay-Tolerant Routing}
+
+Delay-Tolerant Networking
+(DTN) approaches are
+relevant when continuous
+end-to-end connectivity
+cannot be guaranteed.
+
+In sparse vehicular
+networks, a vehicle
+may temporarily store
+a packet and forward
+it when a suitable
+communication opportunity
+becomes available.
+
+This strategy is commonly
+described as a
+store-carry-forward
+mechanism.
+
+Although delay-tolerant
+forwarding can improve
+information delivery
+in disconnected networks,
+it may introduce
+substantial delays.
+
+Therefore, it is
+generally unsuitable
+for applications that
+require immediate
+hazard notification,
+but it may support
+delay-tolerant
+information services.
+
+\begin{table*}[t]
+\centering
+\caption{Qualitative Comparison of Routing Approaches in VANETs}
+\label{tab:routing_comparison}
+\footnotesize
+\begin{tabular}{|p{2.1cm}|p{2.0cm}|p{3.2cm}|p{3.3cm}|p{4.0cm}|}
+\hline
+\textbf{Category} &
+\textbf{Examples} &
+\textbf{Main Principle} &
+\textbf{Potential Advantage} &
+\textbf{Major Limitation} \\
+\hline
+Proactive &
+DSDV, OLSR &
+Maintain routing information continuously &
+Routes may be available without initial discovery &
+Periodic control overhead and stale routes under high mobility \\
+\hline
+Reactive &
+AODV, DSR &
+Discover routes when required &
+Avoids maintaining all routes continuously &
+Route discovery delay and repeated failures \\
+\hline
+Geographic &
+GPSR &
+Forward according to geographic position &
+Reduced dependence on complete end-to-end route information &
+Position errors, local minima, and road obstacles \\
+\hline
+Broadcast-based &
+Selective rebroadcasting &
+Disseminate messages to nearby vehicles &
+Suitable for local warnings and cooperative awareness &
+Redundant transmissions and channel congestion \\
+\hline
+Delay-tolerant &
+Store-carry-forward &
+Buffer packets until forwarding becomes possible &
+Can operate under intermittent connectivity &
+Potentially high delivery delay \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsection{Routing Performance Considerations}
+\label{sec:3C}
+
+Routing performance is influenced
+by network topology, mobility,
+wireless channel conditions,
+and forwarding decisions.
+
+\subsubsection{Route Stability}
+
+A stable communication route
+should remain available
+for a sufficiently long
+period to support
+data transmission.
+
+In a simplified
+one-dimensional scenario,
+the relative speed
+between two vehicles
+can be represented as
+
+\begin{equation}
+v_{\mathrm{rel}} = |v_i-v_j|,
+\label{eq:relative_speed}
+\end{equation}
+
+where $v_i$ and $v_j$
+are the signed velocities
+of vehicles $i$ and $j$
+along the same road axis.
+
+Under a simplified
+constant-speed model,
+the time required for
+the relative separation
+to change by a distance
+$\Delta d$ is
+
+\begin{equation}
+T = \frac{\Delta d}{v_{\mathrm{rel}}},
+\qquad v_{\mathrm{rel}}>0.
+\label{eq:contact_time}
+\end{equation}
+
+This expression assumes
+that the relative motion
+changes the separation
+monotonically over the
+considered interval.
+
+It is an illustrative
+mobility relationship,
+not a general prediction
+of wireless link lifetime.
+Actual link duration
+also depends on initial
+positions, direction
+of travel, propagation
+conditions, and the
+communication range.
+
+\subsubsection{Routing Overhead}
+
+Routing overhead represents
+the communication resources
+consumed by control messages
+and route maintenance.
+
+An illustrative normalized
+control overhead metric
+may be written as
+
+\begin{equation}
+O_{\mathrm{norm}} =
+\frac{N_{\mathrm{control}}}
+{N_{\mathrm{data,delivered}}},
+\label{eq:routing_overhead}
+\end{equation}
+
+where $N_{\mathrm{control}}$
+is the number of routing
+control packet transmissions
+and $N_{\mathrm{data,delivered}}$
+is the number of successfully
+delivered data packets.
+
+This metric must be defined
+consistently when comparing
+different protocols,
+particularly when
+retransmissions or
+multihop forwarding
+are included.
+
+\subsubsection{Routing Trade-Offs}
+
+No single routing approach
+is optimal for every
+vehicular scenario.
+
+Proactive routing
+can reduce initial
+route acquisition delay
+but introduces periodic
+control traffic.
+
+Reactive routing
+can avoid maintaining
+unused routes, although
+route discovery and
+link recovery may
+increase delay.
+
+Geographic forwarding
+can exploit vehicle
+location information,
+but its performance
+depends on positioning
+accuracy and local
+network connectivity.
+
+Delay-tolerant approaches
+can operate in sparse
+networks but may not
+meet the timing
+requirements of
+safety applications.
+
+Therefore, routing
+protocol selection
+should consider
+application requirements,
+traffic density,
+mobility patterns,
+and road environments
+\cite{Karagiannis2011,Zeadally2012}.
+
+\subsection{Applications of VANETs}
+\label{sec:3b}
+
+VANET applications
+are commonly classified
+into safety-related,
+traffic efficiency,
+and information services
+\cite{Hartenstein2008}.
+
+\subsubsection{Road Safety Applications}
+
+Road safety is a major
+motivation for vehicular
+communication research.
+
+Potential applications
+include emergency
+electronic brake warnings,
+collision risk alerts,
+hazardous road condition
+notifications, and
+cooperative awareness.
+
+These applications
+often involve
+time-sensitive messages.
+Their effectiveness
+depends on timely
+delivery, reliable
+communication, and
+the accuracy of
+the exchanged information.
+
+For example, when a
+vehicle detects
+unexpected braking,
+it may generate
+a warning intended
+for nearby vehicles.
+
+The warning must be
+received and processed
+within an application-
+appropriate time
+interval to remain useful.
+
+\subsubsection{Traffic Management Applications}
+
+Traffic management
+applications aim to
+improve transportation
+efficiency through
+the exchange of
+traffic-related information.
+
+Examples include
+congestion monitoring,
+dynamic route guidance,
+traffic incident
+notifications, and
+infrastructure-assisted
+traffic coordination.
+
+Connected vehicles
+may provide information
+about local traffic
+conditions, while
+roadside infrastructure
+may distribute
+relevant updates.
+
+However, the benefits
+of these applications
+depend on the quality,
+timeliness, and
+availability of
+the collected information
+\cite{Karagiannis2011}.
+
+\subsubsection{Information and Convenience Services}
+
+Non-safety services
+may include navigation
+assistance, location-based
+information, and access
+to transportation-related
+digital services.
+
+Compared with urgent
+safety notifications,
+some information services
+may tolerate greater
+communication delay.
+
+Nevertheless, bandwidth
+consumption and
+resource allocation
+remain important,
+particularly when
+safety and non-safety
+traffic share
+communication resources.
+
+\begin{table}[htbp]
+\centering
+\caption{Application Requirements in VANETs}
+\label{tab:vanet_applications}
+\footnotesize
+\begin{tabular}{|p{1.7cm}|p{2.3cm}|p{2.3cm}|}
+\hline
+\textbf{Category} &
+\textbf{Examples} &
+\textbf{Primary Requirement} \\
+\hline
+Safety &
+Emergency braking and hazard alerts &
+Timely and reliable delivery \\
+\hline
+Traffic efficiency &
+Congestion information and route guidance &
+Information freshness and coverage \\
+\hline
+Information services &
+Navigation and digital services &
+Connectivity and service availability \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Security Threats in VANETs}
+\label{sec:3D}
+
+Security is a critical
+requirement for vehicular
+communication because
+received information
+may influence driving
+decisions and traffic
+management operations
+\cite{Zeadally2012}.
+
+An attacker may attempt
+to inject false messages,
+disrupt communication,
+or obtain sensitive
+information about
+network participants.
+
+\subsubsection{Sybil Attacks}
+
+In a Sybil attack,
+a malicious participant
+attempts to represent
+multiple identities
+within the network.
+
+Such behavior may
+distort perceived
+traffic conditions
+or influence
+cooperative decisions.
+
+For example, false
+identities could
+be used to create
+a misleading impression
+of vehicle density.
+
+\subsubsection{Denial-of-Service Attacks}
+
+Denial-of-Service
+(DoS) attacks attempt
+to reduce the
+availability of
+communication services.
+
+An attacker may
+generate excessive
+traffic or interfere
+with legitimate
+message exchange.
+
+Distributed
+Denial-of-Service
+(DDoS) attacks
+involve multiple
+sources contributing
+to service disruption.
+
+\subsubsection{False Information Injection}
+
+False information
+injection occurs
+when misleading
+or fabricated
+messages are
+introduced into
+the communication
+environment.
+
+Examples include
+incorrect hazard
+reports, manipulated
+traffic information,
+or false vehicle
+status messages.
+
+Even when a message
+is associated with
+an authenticated
+participant, its
+content may still
+be inaccurate
+or malicious.
+
+Therefore, message
+authentication alone
+does not guarantee
+the correctness
+of reported events.
+
+\subsubsection{Replay Attacks}
+
+A replay attack
+involves retransmitting
+previously valid
+messages in an
+inappropriate context.
+
+For instance,
+an old hazard
+notification could
+be replayed after
+the reported
+condition no
+longer exists.
+
+Freshness checks,
+timestamps, and
+appropriate message
+validation mechanisms
+can help reduce
+this risk.
+
+\subsubsection{Privacy Threats}
+
+Vehicular messages
+may contain information
+that reveals
+vehicle movement
+or location.
+
+Repeated observation
+of communication
+patterns may create
+privacy risks.
+
+Privacy-preserving
+mechanisms must
+balance participant
+accountability with
+protection against
+unnecessary tracking.
+
+\subsection{Security Requirements and Countermeasures}
+\label{sec:3E}
+
+A secure VANET
+must address
+several complementary
+security objectives
+\cite{Zeadally2012,Karagiannis2011}.
+
+\textbf{Authentication:}
+A receiving entity
+should be able to
+verify the legitimacy
+of relevant message
+credentials or
+communication participants.
+
+\textbf{Integrity:}
+Security mechanisms
+should help detect
+unauthorized changes
+to transmitted messages.
+
+\textbf{Availability:}
+Communication services
+should remain usable
+despite interference,
+congestion, and
+attempted disruption.
+
+\textbf{Privacy:}
+The system should
+limit unnecessary
+disclosure of
+vehicle identity
+and movement patterns.
+
+\textbf{Freshness:}
+Receivers should
+be able to identify
+messages that are
+outdated or replayed
+when the application
+requires current
+information.
+
+Potential countermeasures
+include digital signatures,
+certificate-based
+authentication,
+pseudonym management,
+misbehavior detection,
+and secure message
+validation.
+
+These mechanisms
+also introduce
+design trade-offs.
+For example,
+cryptographic
+verification consumes
+processing resources,
+while security-related
+message fields
+increase communication
+overhead.
+
+\begin{table*}[t]
+\centering
+\caption{Representative VANET Security Threats and Mitigation Approaches}
+\label{tab:vanet_security}
+\footnotesize
+\begin{tabular}{|p{2.6cm}|p{4.0cm}|p{4.0cm}|p{4.0cm}|}
+\hline
+\textbf{Threat} &
+\textbf{Attack Mechanism} &
+\textbf{Potential Impact} &
+\textbf{Mitigation Approach} \\
+\hline
+Sybil attack &
+Use of multiple deceptive identities &
+Manipulated traffic perception or cooperative decisions &
+Credential management and misbehavior detection \\
+\hline
+DoS/DDoS &
+Disruption through excessive or malicious traffic &
+Reduced communication availability &
+Traffic monitoring and resource protection \\
+\hline
+False information &
+Distribution of fabricated vehicle or road data &
+Incorrect situational awareness &
+Message validation and consistency checks \\
+\hline
+Replay attack &
+Retransmission of outdated messages &
+Misleading or stale event information &
+Timestamps, freshness checks, and replay protection \\
+\hline
+Privacy attack &
+Observation and correlation of vehicle messages &
+Location tracking and identity inference &
+Pseudonyms and privacy-aware credential management \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsection{Major Technical Challenges}
+\label{sec:3c}
+
+In addition to routing
+and security concerns,
+VANETs face several
+interconnected
+technical challenges
+\cite{Hartenstein2008,Karagiannis2011}.
+
+\subsubsection{Communication Reliability}
+
+Wireless communication
+is influenced by
+signal attenuation,
+interference,
+obstacles, and
+changing connectivity.
+
+Reliable delivery
+is particularly
+important when
+messages are used
+to support
+safety-related
+applications.
+
+\subsubsection{Network Congestion}
+
+High vehicle density
+may increase
+the number of
+simultaneous
+transmissions.
+
+Excessive channel
+load can lead
+to contention,
+packet collisions,
+and communication
+delay.
+
+Congestion control
+mechanisms attempt
+to regulate
+communication
+resource usage
+while preserving
+important information.
+
+\subsubsection{Scalability}
+
+Vehicular networks
+must support
+different traffic
+densities and
+deployment sizes.
+
+A mechanism that
+performs adequately
+in a small scenario
+may experience
+higher overhead
+or reduced
+reliability
+as the number
+of participating
+vehicles increases.
+
+\subsubsection{Interoperability}
+
+Connected transportation
+systems may contain
+vehicles using
+different equipment,
+communication
+technologies,
+and protocol
+implementations.
+
+Interoperability
+is important for
+supporting
+communication
+across heterogeneous
+deployments.
+
+\subsubsection{Security and Privacy Trade-Offs}
+
+Strong authentication
+and accountability
+are important for
+detecting malicious
+behavior.
+
+However, vehicular
+systems must also
+protect sensitive
+identity and
+location information.
+
+Balancing these
+requirements remains
+an important
+research challenge.
+
+\subsection{Discussion}
+\label{sec:3F}
+
+The analysis of
+routing approaches,
+applications, and
+security challenges
+demonstrates that
+VANET design
+involves multiple
+interdependent
+decisions.
+
+Routing protocols
+must adapt to
+vehicle mobility
+and changing
+network connectivity.
+At the same time,
+communication
+mechanisms must
+satisfy application-
+specific requirements
+for delay,
+reliability,
+and coverage.
+
+Security mechanisms
+must protect
+communication
+without introducing
+unacceptable
+processing or
+transmission overhead.
+
+These considerations
+suggest that
+future VANET
+solutions should
+be evaluated
+under realistic
+mobility conditions,
+different vehicle
+densities, and
+representative
+wireless environments.
+
+A comprehensive
+evaluation should
+consider multiple
+performance metrics
+rather than relying
+on a single
+indicator of
+network quality.

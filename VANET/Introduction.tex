@@ -1,0 +1,368 @@
+
+\section{Introduction}
+\label{sec:1}
+
+\subsection{Background and Motivation}
+
+The development of wireless communication
+technologies has created significant opportunities
+for improving transportation safety, efficiency,
+and connectivity. Intelligent Transportation
+Systems (ITS) integrate communication, sensing,
+and information processing technologies to
+support safer and more efficient road networks.
+
+Vehicular Ad Hoc Networks (VANETs) represent
+an important component of ITS. A VANET is
+a specialized form of Mobile Ad Hoc Network
+(MANET) in which vehicles communicate with
+other vehicles and roadside infrastructure.
+These networks support the exchange of
+traffic-related information without requiring
+all communication to pass through centralized
+infrastructure \cite{Hartenstein2008}.
+
+The primary motivation behind VANET research
+is the need for timely and reliable
+information exchange in highly dynamic
+transportation environments. Vehicles may
+share information about emergency braking,
+traffic congestion, road hazards, and
+unexpected driving conditions.
+
+Such communication can improve situational
+awareness and support cooperative
+transportation applications. However,
+the practical effectiveness of these
+services depends on wireless connectivity,
+communication reliability, and the
+accuracy of exchanged information
+\cite{Zeadally2012}.
+
+Unlike conventional wireless networks,
+VANETs operate under conditions
+characterized by high mobility,
+rapid topology changes, and
+variable vehicle density.
+These characteristics introduce
+significant challenges for
+network design and communication
+protocols \cite{Karagiannis2011}.
+
+\subsection{VANET Communication Environment}
+
+Vehicular communication commonly includes
+Vehicle-to-Vehicle (V2V) and
+Vehicle-to-Infrastructure (V2I) communication.
+
+V2V communication enables nearby vehicles
+to exchange information directly.
+For example, a vehicle detecting a
+hazardous road condition may distribute
+a warning to surrounding vehicles.
+
+V2I communication allows vehicles
+to interact with Roadside Units (RSUs)
+and other transportation infrastructure.
+These connections may support
+traffic information distribution,
+roadside services, and
+infrastructure-assisted applications.
+
+Both communication modes form part
+of the broader Vehicle-to-Everything
+(V2X) concept, which also includes
+communication with pedestrians
+and external communication networks.
+
+Vehicular networking architectures
+must consider the requirements
+of different applications.
+Safety-related services may require
+timely message dissemination,
+while traffic management and
+information services may prioritize
+coverage, connectivity, or
+data capacity \cite{Karagiannis2011}.
+
+\subsection{Research Problem}
+
+Despite their potential benefits,
+VANETs face technical challenges
+that distinguish them from
+traditional wireless networks.
+
+One major challenge is
+rapidly changing network topology.
+As vehicles move, communication
+links may be established or
+disconnected within short
+periods of time.
+
+Consequently, routing mechanisms
+must adapt to changing
+connectivity while limiting
+communication overhead
+and transmission delay.
+
+Another challenge is
+the variation in vehicle density.
+Sparse traffic conditions
+may create disconnected
+network segments, while
+dense traffic can increase
+wireless channel contention
+and packet collisions.
+
+Wireless propagation conditions,
+road geometry, and physical
+obstacles can also influence
+communication reliability.
+
+Furthermore, VANETs must
+address security and privacy
+concerns. Malicious participants
+may attempt to inject
+false information,
+disrupt communication,
+or exploit vehicle
+location information.
+
+These challenges demonstrate
+that reliable vehicular
+communication requires
+careful consideration
+of mobility, routing,
+wireless access,
+security, and
+application requirements
+\cite{Zeadally2012,Karagiannis2011}.
+
+\subsection{Research Objectives}
+
+The main objective of this paper
+is to provide a structured
+technical review of
+Vehicular Ad Hoc Networks
+from a wireless networking
+perspective.
+
+The specific objectives are:
+
+\begin{enumerate}
+
+\item To examine the fundamental
+architecture of VANETs and
+the functions of On-Board Units
+(OBUs) and Roadside Units (RSUs).
+
+\item To explain V2V, V2I,
+and broader V2X communication
+mechanisms and their applications.
+
+\item To review major routing
+protocol categories and discuss
+their advantages and limitations
+under vehicular mobility.
+
+\item To investigate important
+road safety, traffic management,
+and information services.
+
+\item To identify challenges
+related to connectivity,
+communication reliability,
+security, and privacy.
+
+\item To review established
+simulation frameworks and
+performance evaluation metrics.
+
+\item To discuss important
+technical trade-offs and
+future research directions.
+
+\item To implement a simplified
+Python-based illustrative experiment
+examining the relationship between
+vehicle density, packet delivery ratio,
+and average communication delay.
+
+\end{enumerate}
+
+\subsection{Scope and Review Methodology}
+
+This paper adopts a
+literature-based technical
+review approach, complemented
+by a simplified Python-based
+illustrative experiment.
+
+Its scope includes
+VANET architectures,
+vehicular communication
+technologies, routing
+protocols, applications,
+security considerations,
+and performance evaluation.
+
+The discussion draws on
+published survey research,
+technical studies, and
+established open-source
+simulation frameworks.
+
+Previous surveys provide
+a foundation for understanding
+VANET requirements,
+architectures, challenges,
+and communication approaches
+\cite{Hartenstein2008,Karagiannis2011,Zeadally2012}.
+
+Simulation is an important
+research methodology
+because it enables
+communication behavior
+to be studied under
+controlled mobility
+and network conditions.
+
+For example, the Veins
+framework integrates
+road traffic simulation
+with wireless network
+simulation, enabling
+coordinated investigation
+of vehicle movement
+and communication
+behavior \cite{Sommer2011}.
+
+In addition to reviewing existing
+simulation approaches and performance
+metrics, this paper includes a
+simplified Python-based illustrative
+experiment.
+
+The experiment considers five vehicle
+counts ranging from 10 to 50, with
+vehicles randomly positioned along
+a one-dimensional road of length 1000 m.
+A fixed communication range of 250 m
+is used, and each vehicle generates
+100 packets.
+
+A simplified probabilistic
+communication model estimates
+packet delivery ratio and average
+communication delay under different
+vehicle counts.
+
+The results are presented through
+a numerical table and two graphical
+visualizations.
+
+The experiment uses Python 3.13,
+NumPy, and Matplotlib, with a fixed
+random seed to support reproducibility.
+
+The experiment does not implement
+realistic vehicle mobility, a complete
+wireless protocol stack, IEEE 802.11p
+channel access, or established VANET
+routing protocols.
+
+Therefore, the generated results
+illustrate the behavior of the
+selected mathematical assumptions
+rather than providing real-world
+VANET performance measurements.
+
+\subsection{Contributions of This Paper}
+
+The main contribution of
+this paper is a structured
+synthesis of important VANET
+research topics, complemented
+by an illustrative computational
+experiment.
+
+First, it examines
+the relationship
+between network
+architecture,
+communication
+technologies,
+and transportation
+applications.
+
+Second, it reviews
+routing approaches
+and discusses their
+limitations under
+highly dynamic
+mobility conditions.
+
+Third, it considers
+security, privacy,
+and communication
+reliability as
+interconnected
+design challenges.
+
+Fourth, it reviews
+simulation frameworks
+and performance metrics
+and discusses how
+experimental assumptions
+can influence the
+interpretation of
+VANET research.
+
+Finally, it presents a
+reproducible Python-based
+illustrative experiment
+that evaluates packet
+delivery ratio and
+average communication
+delay for different
+vehicle counts.
+
+The experiment complements
+the literature review by
+demonstrating how simplified
+modeling assumptions influence
+performance evaluation results.
+
+\subsection{Organization of the Paper}
+
+The remainder of this paper is organized
+as follows.
+
+Section~II introduces VANET architecture,
+system components, and vehicular
+communication technologies.
+
+Section~III discusses routing protocols,
+vehicular applications, and major
+technical challenges.
+
+Section~IV reviews simulation frameworks,
+performance evaluation metrics, and
+presents a simplified Python-based
+illustrative experiment with numerical
+and graphical results.
+
+Section~V presents a comparative analysis
+of published studies and routing approaches.
+
+Section~VI examines modern V2X communication
+technologies, including IEEE 802.11p,
+LTE-V2X, IEEE 802.11bd, and 5G NR-V2X.
+
+Section~VII discusses open research
+challenges and future directions,
+including security, privacy,
+scalability, and emerging approaches.
+
+Finally, Section~VIII presents the
+conclusions and future work.
